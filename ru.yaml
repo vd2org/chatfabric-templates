@@ -558,7 +558,7 @@ private:
 
 slap:
   all: |
-    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} слегка шлёпнул </i>#{{uto.code_display}}<i> {{uto.nick}} большой форелью{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} слегка шлёпает </i>#{{uto.code_display}}<i> {{uto.nick}} большой форелью{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
   list: |
     <b>[BOT]</b> Выбери пользователя, чтобы шлепнуть:
   slow: |
