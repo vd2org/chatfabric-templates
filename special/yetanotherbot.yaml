@@ -34,6 +34,38 @@ slap:
   gph: |
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} пытается пробудить древнее зло </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
 
+all:
+  select: |
+   {{T('slap/all/variants/%s' % range(13)|random, ufrom=ufrom, uto=uto, hash=hash)}}
+  variants:
+   0: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, возомнив, что его руки — палочки, а полупопия </i>#{{uto.code_display}}<i> {{uto.nick}} — барабаны, сыграл на них мощное соло{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   1: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} проверяет на аллергию </i>#{{uto.code_display}}<i> {{uto.nick}} , шлёпая мёдом{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   2: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, вымазав ладони кетчупом, оставил красный след </i>#{{uto.code_display}}<i> {{uto.nick}} на попе{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   3: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} решил поиграть в Сарумана и нанёс на лицо </i>#{{uto.code_display}}<i> {{uto.nick}} майонезный отпечаток своей лажони{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   4: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} с визгом «Да как ты смеешь!?» наносит </i>#{{uto.code_display}}<i> {{uto.nick}} отпечаток своих ладоней на обе щеки{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   5: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} ставит подножку, от которой </i>#{{uto.code_display}}<i> {{uto.nick}} шлепается в грязь{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   6: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} отворачивается, шлёпая </i>#{{uto.code_display}}<i> {{uto.nick}} своим хвостом{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   7: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} устраивает небольшую флагелляцию </i>#{{uto.code_display}}<i> {{uto.nick}} , привлекая внимание{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   8: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} шлёпнул паддлом </i>#{{uto.code_display}}<i> {{uto.nick}} , показывая своё превосходство{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   9: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} под внезапным порывом души устраивает </i>#{{uto.code_display}}<i> {{uto.nick}} сеанс спанкинга{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   10: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} флоггером закрепляет </i>#{{uto.code_display}}<i> {{uto.nick}} условный рефлекс{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   11: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} раскрепощает </i>#{{uto.code_display}}<i> {{uto.nick}} шлепком{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+   12: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, испытывая возбуженный интерес, слегка дергает </i>#{{uto.code_display}}<i> {{uto.nick}} за косичку{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+
+
 hug:
   j: |
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} знает, что нотификатор отключен, но все равно хочет привлечь внимание и теребит стики </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
