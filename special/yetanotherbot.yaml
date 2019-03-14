@@ -36,7 +36,7 @@ slap:
 
 all:
   select: |
-   {{T('slap/all/variants/%s' % range(13)|random, ufrom=ufrom, uto=uto, hash=hash)}}
+   {{T('slap/all/variants/%s' % range(14)|random, ufrom=ufrom, uto=uto, hash=hash)}}
   variants:
    0: |
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, возомнив, что его руки — палочки, а полупопия </i>#{{uto.code_display}}<i> {{uto.nick}} — барабаны, сыграл на них мощное соло{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
@@ -64,7 +64,8 @@ all:
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} раскрепощает </i>#{{uto.code_display}}<i> {{uto.nick}} шлепком{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
    12: |
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, испытывая возбуженный интерес, слегка дергает </i>#{{uto.code_display}}<i> {{uto.nick}} за косичку{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
-
+   13: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} слегка шлёпает </i>#{{uto.code_display}}<i> {{uto.nick}} большой форелью{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
 
 hug:
   j: |
