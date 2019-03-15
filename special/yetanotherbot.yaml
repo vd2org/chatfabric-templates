@@ -41,6 +41,8 @@ hug:
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} подкралась к </i>#{{uto.code_display}}<i> {{uto.nick}}, прильнула всем телом и нежно поцеловала в щёчку{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
   gph: |
     <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} падает в бездну в попытке обхватить темноту, приняв её за </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+  greem: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, в качестве приветствия, целует в щёчку </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
 
   all:
     select: |
