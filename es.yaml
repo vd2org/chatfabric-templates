@@ -47,7 +47,7 @@ help: |
   /addmod [CÓDIGO] - <i>Añadir moderador</i>
   /rmmod [CÓDIGO] - <i>Eliminar moderador</i>
   /unban [CÓDIGO] - <i>Desbloquear usuario</i>
-  /say [TEXT] - <i>Hablar desde el bot</i>
+  /say [TEXTO] - <i>Hablar desde el bot</i>
   /poll_kill - <i>Encuesta de la muerte(¡Peligro!)</i>
   {%endif%}{%if user._id == owner%}
   <b>Comandos del propietario:</b>
