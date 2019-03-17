@@ -1,1 +1,54 @@
-
+@@ -1,7 +1,7 @@
+about: |
+  <b>[BOT]</b> <b>{{bot_name}}</b>.
+  <b>Uptime:</b> {{started|elapsed(True)}}.
+  <b>Uptime:</b> {{started|elapsed(show_seconds=True)}}.
+  <b>Msgs:</b> {{count}}.
+  <b>Msg rate:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
+@@ -124,7 +124,7 @@ info:
+  text: |
+    <b>[BOT]</b> <b>Information about</b> {{T('common/symbol', user=user)}} #{{user.code_display}} {{user.nick}}:
+    Con nosotros <b>{{user.created|elapsed}}</b>
+    Escribió por última vez <b>{{user.last_activity|elapsed(True)}}</b>
+    Escribió por última vez <b>{{user.last_activity|elapsed(show_seconds=True)}}</b>
+    Status: <b>{%if user.is_active%}ONLINE{%else%}OFFLINE{%endif%}
+    {%if user.is_owner%}, PROPIETARIO{%endif%}
+    {%if user.is_resident%}, RESIDENTE{%endif%}
+@@ -328,9 +328,9 @@ message:
+harakiri:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} hizo un harakiri y no puede volver al chat en {{user.harakiri_till|remaining(True)}}.
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} hizo un harakiri y no puede volver al chat en {{user.harakiri_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Hiciste un harakiri y no puedes volver al chat en {{user.harakiri_till|remaining(True)}}.
+    <b>[BOT]</b> Hiciste un harakiri y no puedes volver al chat en {{user.harakiri_till|remaining(show_seconds=True)}}.
+  fail: |
+    <b>[BOT]</b> Error.
+    Para hacer funcionar este comando debes introducir /harakiri e introducir la cantidad de minutos (de 1 a 10080) o R para jugar al juego.
+@@ -452,7 +452,7 @@ moderator:
+    👮 Moderation for #{{user.code_display}} {{user.nick}}.
+    {%for l in log%}
+    {{l.time.strftime('%m/%d %H:%M')}} {%if l.by%}#{{l.by.code_display}} {%endif%}<b>{{l.action.upper()}}</b> <i>{%if l.data.till%}{{l.data.till|remaining(True, l.time)}}{%endif%}
+    {{l.time.strftime('%m/%d %H:%M')}} {%if l.by%}#{{l.by.code_display}} {%endif%}<b>{{l.action.upper()}}</b> <i>{%if l.data.till%}{{l.data.till|remaining(show_seconds=True, from_time=l.time)}}{%endif%}
+    {%if l.data.nick%}{{l.data.nick}}{%endif%}
+    {%if l.data.id%}#{{l.data.id}}{%endif%}
+    {%if l.data.status is defined%}{%if l.data.status%}ON{%else%}OFF{%endif%}{%endif%}
+@@ -479,19 +479,19 @@ ban:
+mute:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ha sido silenciado durante {{user.muted_till|remaining(True)}}.
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ha sido silenciado durante {{user.muted_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Has sido silenciado en el chat durante {{user.muted_till|remaining(True)}}.
+    <b>[BOT]</b> Has sido silenciado en el chat durante {{user.muted_till|remaining(show_seconds=True)}}.
+    Tus mensajes, fotos y stickers no se muestran en el chat, el bot no muestra si entras o sales del chat. Espera que el tiempo pase y no lo malgastes.
+    Tus commandos disponibles: /start, /stop and /rules.
+kick:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ha sido expulsado por {{user.kicked_till|remaining(True)}}.
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ha sido expulsado por {{user.kicked_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Has sido expulsado. Puedes volver en {{user.kicked_till|remaining(True)}}.
+    <b>[BOT]</b> Has sido expulsado. Puedes volver en {{user.kicked_till|remaining(show_seconds=True)}}.
+rename:
+  all: |
