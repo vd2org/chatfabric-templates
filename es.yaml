@@ -56,7 +56,7 @@ help: |
   /options - <i>Ver los ajustes del chat</i>
   /option [NOMBRE] [VALOR] - <i>Cambiar ajuste del chat</i>
   {%endif%}
-  Most commands may be used in reply instead of enter CODE.
+  La mayoría de los comandos pueden ser aplicados haciendo respuesta en lugar de introducir el CÓDIGO.
 common:
   kb:
     cancel: |
@@ -70,13 +70,13 @@ common:
   luna: |
     {%if minutes < 5 and days <= 0%}🌕{%elif minutes < 60 and days <= 0%}🌖{%elif minutes < 60 * 12 and days <= 0%}🌗{%elif hours < 24 and days <= 0%}🌘{%else%}🌑{%endif%}
   noresident: |
-    <b>[BOT]</b> Very sorry, but this command is only for chat's residents.
+    <b>[BOT]</b> Lo siento mucho, pero este comando es solo para los residentes del chat.
   unknown: |
-    <b>[BOT]</b> I don't know this command. Press /help, To see all availiable commands.
+    <b>[BOT]</b> No conozco este comando. Pulsa /help, para ver todos los comandos disponibles.
   fail: |
-    <b>[BOT]</b> Can not. 😔
+    <b>[BOT]</b> No se pudo. 😔
   fail_alert: |
-    Can not. 😔
+    No se pudo. 😔
 info:
   kb:
     am: |
@@ -95,17 +95,17 @@ info:
       menu: |
         🚯
       msg: |
-        🚯 Forbid privates
+        🚯 Prohibir privados
       slap: |
-        🚯 Forbid slaps
+        🚯 Prohibir bofetadas
       hug: |
-        🚯 Forbid hugs
+        🚯 Prohibir abrazos
       replay: |
-        🚯 Forbid replies
+        🚯 Prohibir respuestas
       text: |
-        🚯 Ignore messages
+        🚯 Ignorar mensajes
   fail: |
-    <b>[BOT]</b> User not found.
+    <b>[BOT]</b> Usuario no encontrado.
   text: |
     <b>[BOT]</b> <b>Information about</b> {{T('common/symbol', user=user)}} #{{user.code_display}} {{user.nick}}:
     With us <b>{{user.created|elapsed}}</b>
