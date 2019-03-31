@@ -173,7 +173,7 @@ hug:
       62: |
         <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} чувствует навязчивую идею обнимать хороших людей, и тянется с обнимашками к </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       63: |
-        <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} берет за ручку </i>#{{uto.code_display}}<i> {{uto.nick}}, и увозит в Прагу{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+        <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} берет за ручку </i>#{{uto.code_display}}<i> {{uto.nick}}, и увозит в Будапешт{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
 
 ban:
   all:
