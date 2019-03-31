@@ -174,6 +174,10 @@ hug:
         <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} чувствует навязчивую идею обнимать хороших людей, и тянется с обнимашками к </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       63: |
         <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}}, испытывая возбуженный интерес, слегка дергает </i>#{{uto.code_display}}<i> {{uto.nick}} за косички{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+      64: |
+        <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} берет за ручку </i>#{{uto.code_display}}<i> {{uto.nick}}, и они оправляются в Будапешт{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+      65: |
+        <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} нежно целует </i>#{{uto.code_display}}<i> {{uto.nick}}, пока тот спит{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
 ban:
   all:
     select: |
