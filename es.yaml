@@ -362,33 +362,33 @@ owner:
       <b>[BOT]</b> Ajustes guardados.
   admins:
     added: |
-      <b>[BOT]</b> User #{{user.code_display}} {{user.nick}} satisfactoriamente promovido a administrador.
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente promovido a administrador.
     removed: |
-      <b>[BOT]</b> User #{{user.code_display}} {{user.nick}} satisfactoriamente eliminado de administradores.
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente eliminado de administradores.
 admin:
   moderators:
     added: |
-      <b>[BOT]</b> User #{{user.code_display}} {{user.nick}} satisfactoriamente promovido a moderador.
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente promovido a moderador.
     removed: |
-      <b>[BOT]</b> User #{{user.code_display}} {{user.nick}} atisfactoriamente eliminado de moderadores.
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} atisfactoriamente eliminado de moderadores.
   unbaned: |
-    <b>[BOT]</b> User #{{user.code_display}} {{user.nick}} satisfactoriamente desbloqueado.
+    <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente desbloqueado.
   changedid: |
-    <b>[BOT]</b> ID user #{{user.code_display}} {{user.nick}} succesfully changed to #{{new_code}}.
+    <b>[BOT]</b> Usuario ID #{{user.code_display}} {{user.nick}} satisfactoriamente cambiado a #{{new_code}}.
   say: |
     <b>[Bot]</b> {{text}}
   poll_killed: |
-    <b>[BOT]</b> Poll killed.
+    <b>[BOT]</b> Encuesta asesinada.
 moderator:
   kb:
     freeze: |
-      ❄️ Freeze
+      ❄️ Congelar
     kick: |
-      👞 Kick
+      👞 Expulsar
     mute: |
       🙊 {{val}}
     resident: |
-      ⚓️ Resident
+      ⚓️ Residente
     textual: |
       🔤 Textual
   moderation: |
@@ -401,123 +401,123 @@ moderator:
     {%if l.data.achievement%}{{l.data.achievement}} - {{l.data.text}}{%endif%}</i>
     {%endfor%}
   done: |
-    <b>[BOT]</b> User #{{user.code_display}} {{user.nick}} was succesfully updated.
+    <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente actualizado.
 achievement:
   added: |
-    <b>[Bot]</b> User #{{user.code_display}} {{user.nick}} got new achievement:
+    <b>[Bot]</b> Usuario #{{user.code_display}} {{user.nick}} tiene un nuevo logro:
     {{symbol}} - {{text}}
   removed: |
-    <b>[Bot]</b> User #{{user.code_display}} {{user.nick}} lost achievement:
+    <b>[Bot]</b> Usuario #{{user.code_display}} {{user.nick}} perdió el logro:
     {{symbol}} - {{text}}
 ban:
   all: |
-    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} is banned forever!
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} bloqueado para siempre!
   text: |
-    <b>[BOT]</b> To my great regrets, you were baned! Seems like your behaviour was bad. Don't write here anymore.
+    <b>[BOT]</b> A mi gran pesar, has sido bloqueado! Parece que tu comportamiento fue malo. No escribas aquí nunca más.
 mute:
   all: |
-    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} is muted for {{user.muted_till|remaining(show_seconds=True)}}.
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} está silenciado durante {{user.muted_till|remaining(show_seconds=True)}}.
   text: |
-    <b>[BOT]</b> Your voice was voided in a chat for {{user.muted_till|remaining(show_seconds=True)}}.
-    Your messages, pictures and stickers aren''t displaying in a chat, bot doesn't show that you have entered or left. Wait till time run out and don't piddle no more.
-    Your availible commands: /start, /stop and /rules.
+    <b>[BOT]</b> Estás silenciado en el chat durante {{user.muted_till|remaining(show_seconds=True)}}.
+    Tus mensajes, fotos y stickers no se muestran en el chat, el bot no mostrará si entras o sales. Espera que el tiempo pase y no lo malgastes más.
+    Tus comandos disponibles son: /start, /stop y /rules.
 kick:
   all: |
-    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} was kicked for {{user.kicked_till|remaining(show_seconds=True)}}.
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} está expulsado durante {{user.kicked_till|remaining(show_seconds=True)}}.
   text: |
-    <b>[BOT]</b> You're kicked. You can to come back in {{user.kicked_till|remaining(show_seconds=True)}}.
+    <b>[BOT]</b> Has sido expulsado. Puedes volver en {{user.kicked_till|remaining(show_seconds=True)}}.
 rename:
   all: |
-    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} was renamed to {{nick}}.
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ha sido renombrado a {{nick}}.
   text: |
-    <b>[BOT]</b> You were renamed. Your new nick - {{nick}}.
+    <b>[BOT]</b> Has sido renombrado. Tu nuevo alias es - {{nick}}.
 pong: |
   <b>[BOT]</b> <i>pong</i>.
 rules: |
-  <b>[BOT] Chat's rules:</b>
+  <b>[BOT] Reglas del chat:</b>
   {{rules}}
 private:
   kb:
     reply: |
-      ✏️ Reply
+      ✏️ Responder
     receive: |
-      📩 Receive
+      📩 Recibir
   notification: |
-    <b>[BOT]</b> You have a private message from #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}.
-    {%if offline%}Enter a chat(/start), to get it.{%endif%}
+    <b>[BOT]</b> Tienes un mensaje privado de #{{user.code_display}} {{user.nick}}{%if bot%} en chat @{{bot}}{%endif%}.
+    {%if offline%}Entra en el chat (/start), para verlo.{%endif%}
   empty: |
-    {%if not callback%}<b>[BOT]</b> {%endif%}There's no private messages for you.
+    {%if not callback%}<b>[BOT]</b> {%endif%}No hay mensajes privados para ti.
   remind: |
-    <b>[BOT]</b> There's {{num}} private messages waiting for you.
+    <b>[BOT]</b> Tienes {{num}} mensajes privados esperándote.
   send:
     canceled: |
-      <b>[BOT]</b> Private message sending was canceled.
+      <b>[BOT]</b> Envío de mensaje privado cancelado.
     fail: |
-      <b>[BOT]</b> Sending was failed.
+      <b>[BOT]</b> El envío falló.
     fail_type: |
-      <b>[BOT]</b> Can't send this message.
+      <b>[BOT]</b> No puedo enviar este mensaje.
     fail_user: |
-      <b>[BOT]</b> Can't find this user.
+      <b>[BOT]</b> No encuentro a este usuario.
     ok: |
-      <b>[BOT]</b> Your message to #{{user.code_display}} {{user.nick}} was succesfully sent.
+      <b>[BOT]</b> Tu mensaje para #{{user.code_display}} {{user.nick}} satisfactoriamente enviado.
     select: |
-      <b>[BOT]</b> Choose a user.
+      <b>[BOT]</b> Selecciona un usuario.
     type: |
-      <b>[BOT]</b> Type and send your message and it will be sent to user #{{user.code_display}} {{user.nick}}.
+      <b>[BOT]</b> Escribe tu mensaje y será enviado al usuario #{{user.code_display}} {{user.nick}}.
   receive:
     message: |
-      <b>[BOT]</b> Private message from #{{user.code_display}} {{user.nick}} at {{time}}:
+      <b>[BOT]</b> Mensaje privado de #{{user.code_display}} {{user.nick}} a las {{time}}:
       {{message}}
     sticker: |
-      <b>[BOT]</b> Private message(<b>sticker</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>sticker</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
     audio: |
-      <b>[BOT]</b> Private message(<b>audio</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>audio</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
     document: |
-      <b>[BOT]</b> Private message(<b>document</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>document</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
     photo: |
-      <b>[BOT]</b> Private message(<b>photo</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>photo</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
     video: |
-      <b>[BOT]</b> Private message(<b>video</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>video</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
     video_note: |
-      <b>[BOT]</b> Private message(<b>video note</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>video note</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
     voice: |
-      <b>[BOT]</b> Private message(<b>voice</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      <b>[BOT]</b> Mensaje privado(<b>voice</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
 slap:
   all: |
-    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} slaps </i>#{{uto.code_display}}<i> {{uto.nick}} around a bit with a large trout{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} abofeteó a </i>#{{uto.code_display}}<i> {{uto.nick}} con una gran trucha{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
   list: |
-    <b>[BOT]</b> Choose a user to slap:
+    <b>[BOT]</b> Selecciona a un usuario para abofetearle:
   slow: |
-    <b>[BOT]</b> It's not necessary to flap a trout so often!
+    <b>[BOT]</b> No es necesario batir la trucha tantas veces!
   notification: |
-    <b>[BOT]</b> Slap from #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+    <b>[BOT]</b> Bofetada de #{{user.code_display}} {{user.nick}}{%if bot%} en el chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
 hug:
   all: |
-    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} hugs </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} abrazó a </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
   list: |
-    <b>[BOT]</b> Choose a user to hug:
+    <b>[BOT]</b> Selecciona a un usuario para abrazarle:
   slow: |
-    <b>[BOT]</b> It's not necessary to hugs so often!
+    <b>[BOT]</b> No es necesario abrazar tantas veces!
   notification: |
-    <b>[BOT]</b> Hug from #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+    <b>[BOT]</b> Abrazo de #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
 start:
   all: |
-    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} enteres chat.{%if new%} <b>He's new!</b>{%endif%}
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} entró en el chat.{%if new%} <b>He's new!</b>{%endif%}
   text: |
-    <b>[BOT]</b> You entered a chat. Your nick - {{user.nick}}. To leave a chat press /stop.
+    <b>[BOT]</b> Entraste en el chat. Tu alias es - {{user.nick}}. Para salir del chat pulsa /stop.
   welcome: |
-    <b>[BOT]</b> Welcome to anonymous chat.
-    To leave a chat print /stop
-    There is a random nick generated for you - {{user.nick}}.
-    If you don''t like it, you can come up with your own and set it with command /nick
-    <b>Have a nice chat!</b>
+    <b>[BOT]</b> Bienvenid@ a un chat anónimo.
+    Para salir pulsa /stop
+    Hay un alias generado automáticamente para ti - {{user.nick}}.
+    Si no te gusta, puedes asignarte uno tú, con el comando /nick
+    <b>Disfruta del chat!</b>
   started: |
-    <b>[BOT]</b> Already in a chat. To leave a chat press /stop.
+    <b>[BOT]</b> Ya estás en el chat. Para salir pulsa /stop.
   not_started: |
-    <b>[BOT]</b> You are not in a chat. To start press /start.
+    <b>[BOT]</b> No estás en el chat. Para entrar pulsa /start.
 stop:
   all: |
-    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} leaves chat.{%if banned%} <b>This rascal has banned a bot!</b>{%endif%}{%if cleaner%} <b>He quiet long time ago.</b>{%endif%}
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} salió del chat.{%if banned%} <b>Este granuja ha detenido el bot!</b>{%endif%}{%if cleaner%} <b>Ha permanecido inactivo por mucho tiempo.</b>{%endif%}
   text: |
-    <b>[BOT]</b> You left chat. Come back soon!
-    To enter again - press /start.
+    <b>[BOT]</b> Saliste del chat. Vuelve pronto!
+    Para entrar de nuevo - presiona /start.
