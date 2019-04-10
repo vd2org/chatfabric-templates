@@ -60,7 +60,7 @@ help: |
 como:
   kb:
     cancel: |
-      ❌ Cancel
+      ❌ Cancelar
     cancels: |
       ❌
     back: |
@@ -107,7 +107,7 @@ info:
   fail: |
     <b>[BOT]</b> Usuario no encontrado.
   text: |
-    <b>[BOT]</b> <b>Information about</b> {{T('common/symbol', user=user)}} #{{user.code_display}} {{user.nick}}:
+    <b>[BOT]</b> <b>Información sobre</b> {{T('common/symbol', user=user)}} #{{user.code_display}} {{user.nick}}:
     Con nosotros <b>{{user.created|elapsed}}</b>
     Escribió por última vez <b>{{user.last_activity|elapsed(show_seconds=True)}}</b>
     Status: <b>{%if user.is_active%}ONLINE{%else%}OFFLINE{%endif%}
