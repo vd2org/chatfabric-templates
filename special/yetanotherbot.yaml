@@ -183,7 +183,7 @@ hug:
       67: |
         <b> *</b> <i>Заметив, что </i>#{{uto.code_display}}<i> {{uto.nick}} хочет чтобы его обняли, </i>#{{ufrom.code_display}} <i>{{ufrom.nick}} без раздумий бросается на него с объятиями{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       68: |
-        <b> *</b> <i>Расположившись на одной кровате, </i>#{{ufrom.code_display}} <i>{{ufrom.nick}} неуключе поглаживает коленку </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+        <b> *</b> <i>Расположившись на одной кровате, </i>#{{ufrom.code_display}} <i>{{ufrom.nick}} неуклюже поглаживает коленку </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       69: |
         <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} решается всё таки придушить </i>#{{uto.code_display}}<i> {{uto.nick}}, в надежде, что именно этого тот и хочет{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       70: |
