@@ -4,7 +4,7 @@ about: |
   <b>Msgs:</b> {{count}}.
   <b>Msg rate:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
   El bot se construyó con la plataforma @ChatFactoryBot, versión <i>{{version}}</i>.
-  Si tienes cuestiones sobre como usar la plataforma o los bots desarrollados - contacta con @IAmRocket.
+  Si tienes cuestiones sobre como usar la plataforma o los bots desarrollados - contacta en inglés con @IAmRocket.
   Noticias de la plataforma: @ChatFactory.
 help: |
   <b>[BOT]</b> Comandos soportados:
