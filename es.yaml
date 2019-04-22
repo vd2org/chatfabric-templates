@@ -3,7 +3,7 @@ about: |
   <b>Uptime:</b> {{started|elapsed(show_seconds=True)}}.
   <b>Msgs:</b> {{count}}.
   <b>Msg rate:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
-  Bot se construyó con la plataforma @ChatFactoryBot, versión <i>{{version}}</i>.
+  El bot se construyó con la plataforma @ChatFactoryBot, versión <i>{{version}}</i>.
   Si tienes cuestiones sobre como usar la plataforma o los bots desarrollados - contacta con @IAmRocket.
   Noticias de la plataforma: @ChatFactory.
 help: |
