@@ -218,7 +218,7 @@ hug:
       82: |
         <b> *</b> <i>Бесцельно блуждая по чату </i>#{{uto.code_display}}<i> {{uto.nick}} попадает в обнимашковую западню </i>#{{ufrom.code_display}} <i>{{ufrom.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       83: |
-        <b> *</b> #{{uto.code_display}} <i>{{ufrom.nick}} складывает обнимашку {{uto.nick}} </i>#{{ufrom.code_display}} <i>{{ufrom.nick}} в копилку знаков внимания{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+        <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} складывает обнимашку </i>#{{uto.code_display}}<i> {{uto.nick}} в копилку знаков внимания{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
       84: |
         <b> *</b> Здо́рово жить - говорит Елена Малышева. Но если #{{ufrom.code_display}} <i>{{ufrom.nick}} не обнимет </i>#{{uto.code_display}}<i> {{uto.nick}} хотя бы раз в сутки - жить совсем не здо́рово{%if hash%}(</i>#{{hash}}<i>){%endif%}!</i>
       85: |
