@@ -29,6 +29,7 @@ help: |
   /vote - <i>Vote</i>
   {%if options.closed%}/invite - <i>Create an invite</i>{{"\n"}}{%endif%}
   /info [CODE] - <i>See information about a user</i>
+  /hug - <i>Hug a user</i>
   /slap [CODE] - <i>Slap a user</i>
   /search [TEXT] - <i>Search a user by a nick</i>
   <i>/harakiri</i> [MINUTES|R] - <i>Make harakiri!</i>
