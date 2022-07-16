@@ -427,6 +427,9 @@ owner:
 
       🔹 <b>new_textual</b> - newcomers will have TEXT status.
       Current value: <b>{{options.new_textual}}</b>.
+      
+      🔹 <b>delete_owner</b> - when deleting, delete the message also from the sender.
+      Current value: <b>{{options.delete_owner}}</b>.
     ok: |
       <b>[BOT]</b> Setting was saved.
   admins:
