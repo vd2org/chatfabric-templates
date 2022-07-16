@@ -494,7 +494,7 @@ moderator:
     👮 Moderation for #{{user.code_display}} {{user.nick}}.
 
     {%for l in log%}
-    {{l.time.strftime('%m/%d %H:%M')}} {%if l.by%}#{{l.by.code_display}} {%endif%}<b>{{l.action.upper()}}</b> <i>{%if l.data.till%}{{l.data.till|remaining(show_seconds=True, from_time=l.time)}}{%endif%}
+    {{l.time.strftime('%m/%d/%Y %H:%M')}} {%if l.by%}#{{l.by.code_display}} {%endif%}<b>{{l.action.upper()}}</b> <i>{%if l.data.till%}{{l.data.till|remaining(show_seconds=True, from_time=l.time)}}{%endif%}
     {%if l.data.nick%}{{l.data.nick}}{%endif%}
     {%if l.data.id%}#{{l.data.id}}{%endif%}
     {%if l.data.status is defined%}{%if l.data.status%}ON{%else%}OFF{%endif%}{%endif%}

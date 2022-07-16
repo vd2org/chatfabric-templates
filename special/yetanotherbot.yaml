@@ -29,7 +29,7 @@ about: |
 hug:
   all:
     select: |
-      {{T('hug/all/variants/%s' % range(88+1)|random, ufrom=ufrom, uto=uto, hash=hash)}}
+      {{T('hug/all/variants/%s' % range(102+1)|random, ufrom=ufrom, uto=uto, hash=hash)}}
     variants:
       0: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} крепко обнимает #{{uto.code_display}} {{uto.nick}}, так и не решив толком, хочет обнять или придушить{%if hash%}(#{{hash}}){%endif%}.</i>
@@ -209,6 +209,34 @@ hug:
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} хочет привлечь внимание #{{uto.code_display}} {{uto.nick}} пуская в ход свои шаловливые пальчики{%if hash%}(#{{hash}}){%endif%}.</i>
       88: |
         <b> *</b> <i>По-отечески, добродушно, без какого-либо подвоха #{{ufrom.code_display}} {{ufrom.nick}} обнимает #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      89: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} скрывается под одеялом с #{{uto.code_display}} {{uto.nick}} чтобы вместе няшиться до рассвета{%if hash%}(#{{hash}}){%endif%}.</i>
+      90: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} набирает сообщение с признанием, а затем стирает, так и не отправив #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      91: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} украдкой рассматривает интимные фотки #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      92: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} случайно касается под столом пальцами коленки #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      93: |
+        <b> *</b> <i>#{{uto.code_display}} {{uto.nick}} вызывает дрожь в коленках у #{{ufrom.code_display}} {{ufrom.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      94: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} дружески обнимает, приподнимает, кружит и ставит на место #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      95: |
+        <b> *</b> <i>Жизнь начинает налаживаться когда #{{ufrom.code_display}} {{ufrom.nick}} замечает #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      96: |
+        <b> *</b> <i>«Это не норма» говорит #{{ufrom.code_display}} {{ufrom.nick}} когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.</i>
+      97: |
+        <b> *</b> <i>#{{uto.code_display}} {{uto.nick}} теряет землю из-под ног когда его обнимает #{{ufrom.code_display}} {{ufrom.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      98: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} теряет голову из-за #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      99: |
+        <b> *</b> <i>«Как тебе такое Илон Маск?» спрашивает #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} уносит в космос от обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
+      100: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} играет в прятки на раздевание с #{{uto.code_display}} {{uto.nick}}, неловко прячась под носком{%if hash%}(#{{hash}}){%endif%}.</i>
+      101: |
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} обещает подарить все звёзды космоса #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      102: |
+        <b> *</b> <i>У #{{ufrom.code_display}} {{ufrom.nick}} были слишком короткие шортики, и это очень смутило #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
 
 ban:
   all:
