@@ -319,7 +319,7 @@ message:
     timeout: |
       <b>[BOT]</b> Message editing timeout.
   not_sent: |
-    <b>[BOT]</b> Bot doesn't send locations and contact details.
+    <b>[BOT]</b> Bot doesn't send such thing.
   flood: |
     <b>[BOT]</b> Too much messages! Wait a little before write more!
   filtered: |
