@@ -89,7 +89,9 @@ common:
   noresident: |
     <b>[BOT]</b> Very sorry, but this command is only for chat's residents.
   unknown: |
-    <b>[BOT]</b> I don't know this command. Press /help, To see all availiable commands.
+    <b>[BOT]</b> I don't know this command. Press /help, To see all available commands.
+  cancelled: |
+    <b>[BOT]</b> Cancelled. 👌
   fail: |
     <b>[BOT]</b> Can not. 😔
   fail_alert: |
