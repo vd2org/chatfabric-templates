@@ -214,7 +214,7 @@ poll:
 
     Твой вариант:
 
-    {%if vote_user._id in poll.answers%}{{poll.variants[poll.answers[vote_user._id]]}}{%else%}<i>Ты еще не голосовал</i>{%endif%}
+    {%if str(vote_user._id) in poll.answers%}{{poll.variants[poll.answers[str(vote_user._id)]]}}{%else%}<i>Ты еще не голосовал</i>{%endif%}
     {%endif%}
   done: |
     <b>[Bot]</b> Результаты голосования за вопрос #{{user.code_display}} {{user.nick}}:

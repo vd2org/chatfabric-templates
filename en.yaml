@@ -215,7 +215,7 @@ poll:
 
     You voted for:
 
-    {%if vote_user._id in poll.answers%}{{poll.variants[poll.answers[vote_user._id]]}}{%else%}<i>You haven't voted yet.</i>{%endif%}
+    {%if str(vote_user._id) in poll.answers%}{{poll.variants[poll.answers[str(vote_user._id)]]}}{%else%}<i>You haven't voted yet.</i>{%endif%}
     {%endif%}
   done: |
     <b>[Bot]</b> Results of poll #{{user.code_display}} {{user.nick}}:
