@@ -224,14 +224,14 @@ hug:
       95: |
         <b> *</b> <i>Жизнь начинает налаживаться, когда #{{ufrom.code_display}} {{ufrom.nick}} замечает #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       96: |
-        <b> *</b> <i> — Это не норма, — говорит #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i> «Это не норма» — говорит #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.</i>
       97: |
         <b> *</b> <i>#{{uto.code_display}} {{uto.nick}} теряет землю из-под ног когда его обнимает #{{ufrom.code_display}} {{ufrom.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       98: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} теряет голову из-за #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       99: |
         <b> *</b> <i> <b> *</b> <i> «Это не норма» — говорит #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.
-        </i> — «Как тебе такое, Илон Маск?» — спрашивает #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} уносит в космос от обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
+        </i> «Как тебе такое, Илон Маск?» — спрашивает #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} уносит в космос от обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
       100: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} играет в прятки на раздевание с #{{uto.code_display}} {{uto.nick}}, неловко прячась под носком{%if hash%}(#{{hash}}){%endif%}.</i>
       101: |
