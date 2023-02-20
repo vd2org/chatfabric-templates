@@ -306,13 +306,13 @@ message:
       show: |
         👀 Show
     photo: |
-      Hidden photo from #{{user.code_display}} {{user.nick}}{%if caption%}:  {{caption}}{%else%}.{%endif%}
+      Hidden photo from #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
     document: |
-      Hidden document from #{{user.code_display}} {{user.nick}}{%if caption%}:  {{caption}}{%else%}.{%endif%}
+      Hidden document from #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
     video: |
-      Hidden video from #{{user.code_display}} {{user.nick}}{%if caption%}:  {{caption}}{%else%}.{%endif%}
+      Hidden video from #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
     audio: |
-      Hidden audio from #{{user.code_display}} {{user.nick}}{%if caption%}:  {{caption}}{%else%}.{%endif%}
+      Hidden audio from #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
   edition:
     noresident: |
       <b>[BOT]</b> Only resident can edit messages.
