@@ -359,7 +359,7 @@ nick:
   frozen: |
     <b>[BOT]</b> You are not allowed to change your nickname.
   taken: |
-    <b>[BOT]</b> This nick is already taken.
+    <b>[BOT]</b> This nick is already taken{%if taken_by%} by #{{taken_by.code_display}} {{taken_by.nick}}{%endif%}.
   long: |
     <b>[BOT]</b> Nick is too long.
   msg: |

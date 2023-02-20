@@ -359,7 +359,7 @@ nick:
   frozen: |
     <b>[BOT]</b> Тебе запрещено менять ник.
   taken: |
-    <b>[BOT]</b> Такой ник уже занят.
+    <b>[BOT]</b> Такой ник уже занят{%if taken_by%} пользователем #{{taken_by.code_display}} {{taken_by.nick}}{%endif%}.
   long: |
     <b>[BOT]</b> Слишком длинный ник.
   msg: |
