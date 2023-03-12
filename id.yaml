@@ -1,0 +1,648 @@
+about: |
+  <b>[BOT]</b> <b>{{bot_name}}</b>.
+
+  <b>Uptime:</b> {{started|elapsed(show_seconds=True)}}.
+  <b>Pesan:</b> {{count}}.
+  <b>Tarif SMS:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
+
+  Bot dibangun di atas platform @ChatFactoryBot, version <i>{{version}}</i>.
+
+  Jika Anda memiliki pertanyaan tentang penggunaan platform atau pengembangan bot - hubungi @RocketBotsBot.
+
+  Berita platform: @ChatFactory.
+
+help: |
+  <b>[BOT]</b> Didukung perintah:
+
+  /start - <i>Masukkan obrolan anonim</i>
+  /stop - <i>Tinggalkan obrolan</i>
+  /nick - <i>Ganti nama panggilan</i>
+  /list - <i>Daftar pengguna dalam obrolan</i>
+  % - <i>Tulis sebagai orang ketiga</i>
+  $ - <i>Tulis pesan tersembunyi</i>
+  /last - <i>Tampilkan pengguna yang terakhir keluar</i>
+  /msg - <i>Kirim pesan pribadi</i>
+  /getmsg - <i>Dapatkan pesan pribadi</i>
+  /notify - <i>Pemberitahuan pesan dalam obrolan</i>
+  /poll - <i>Membuat poll</i>
+  /polldone - <i>Mengakhiri polling</i>
+  /vote - <i>Vote</i>
+  {%if options.closed%}/invite - <i>Buat undangan</i>{{"\n"}}{%endif%}
+  /info [CODE] - <i>Lihat informasi tentang pengguna</i>
+  /hug [CODE] - <i>Peluk pengguna</i>
+  /slap [CODE] - <i>Menampar pengguna</i>
+  /search [TEXT] - <i>Cari pengguna dengan nick</i>
+  <i>/harakiri</i> [MINUTES|R] - <i>Make harakiri!</i>
+  /ping - <i>Periksa operabilitas bot</i>
+  /rules - <i>Aturan obrolan</i>
+  /about - <i>Informasi tentang bot</i>
+  {% if user.is_moderator or user.is_admin or user._id == owner %}
+
+  <b>Moderator''s perintah:</b>
+
+  /mute [CODE] [MINUTES] - <i>Membatalkan suara pengguna</i>
+  {%if options.silent_cmds%}/sban, {%endif%}/ban [CODE] - <i>Larang pengguna</i>
+  /rename [CODE] [NICK] - <i>Ganti nama pengguna</i>
+  /addach [CODE] [ACH] [TEXT] - <i>Tambah prestasi</i>
+  /rmach [CODE] [ACH] - <i>Hapus prestasi</i>
+  /kick [CODE] - <i>Tendang pengguna</i>
+  /resident [CODE] - <i>Mengubah status penduduk</i>
+  /freeze [CODE] - <i>Dilarang mengubah nick</i>
+  /textual [CODE] - <i>Modus hanya teks</i>
+  /del - <i>Delete message from chat</i>
+  {%endif%}{%if user.is_admin or user._id == owner%}
+
+  <b>Admin's perintah:</b>
+
+  /sethug [CODE] [TEXT] - <i>Tetapkan pelukan pribadi</i>
+  /setslap [CODE] [TEXT] - <i>Tetapkan tamparan pribadi</i>
+  /changeid [CODE] [NEW] - <i>Ubah ID pengguna</i>
+  /addmod [CODE] - <i>Tambahkan moderator</i>
+  /rmmod [CODE] - <i>Hapus moderator</i>
+  /unban [CODE] - <i>Batalkan pencekalan pengguna</i>
+  /say [TEXT] - <i>Ucapkan dari bot</i>
+  /poll_kill - <i>Membunuh poll(bahaya!)</i>
+
+  {%endif%}{%if user._id == owner%}
+  <b>Owner's commands:</b>
+
+  /addadmin [CODE] - <i>Tambahkan admin</i>
+  /rmadmin [CODE] - <i>Hapus admin</i>
+  /options - <i>Lihat setelan obrolan</i>
+  /option [NAME] [VALUE] - <i>Change chat's setting</i>
+  {%endif%}
+
+  Sebagian besar perintah dapat digunakan sebagai balasan alih-alih masuk CODE.
+
+common:
+  kb:
+    cancel: |
+      ❌ Cancel
+    cancels: |
+      ❌
+    back: |
+      ↩️
+  symbol: |
+    {%if user.is_owner%}✳️{%elif user.is_admin%}💢{%elif user.is_moderator%}🔆{%elif user.is_resident%}✅{%else%}🆕{%endif%}
+  luna: |
+    {%if minutes < 5 and days <= 0%}🌕{%elif minutes < 60 and days <= 0%}🌖{%elif minutes < 60 * 12 and days <= 0%}🌗{%elif hours < 24 and days <= 0%}🌘{%else%}🌑{%endif%}
+  noresident: |
+    <b>[BOT]</b> Mohon maaf, tetapi perintah ini hanya untuk penghuni obrolan.
+  unknown: |
+    <b>[BOT]</b> Saya tidak tahu perintah ini. Tekan /help, Untuk melihat semua perintah yang tersedia.
+  cancelled: |
+    <b>[BOT]</b> Dibatalkan. 👌
+  fail: |
+    <b>[BOT]</b> Tidak bisa. 😔
+  fail_alert: |
+    Tidak bisa. 😔
+
+info:
+  kb:
+    am: |
+      👮
+    msg: |
+      ✉️
+    slap: |
+      ✋️
+    hug: |
+      🤗
+    more: |
+      ⏬
+    less: |
+      ⏫
+    ignore:
+      menu: |
+        🚯
+      msg: |
+        🚯 Larang prajurit
+      slap: |
+        🚯 Larang tamparan
+      hug: |
+        🚯 Larangan pelukan
+      replay: |
+        🚯 Larang balasan
+      text: |
+        🚯 Abaikan pesan
+  fail: |
+    <b>[BOT]</b> Pengguna tidak ditemukan.
+  text: |
+    <b>[BOT]</b> <b>Informasi tentang</b> {{T('common/symbol', user=user)}} #{{user.code_display}} {{user.nick}}:
+    Bersama kami <b>{{user. created|elapsed}}</b>
+    Menulis terakhir kali <b>{{user.last_activity|elapsed(show_seconds=True)}}</b>
+    Status: <b>{%if user.is_active%}ONLINE{%else%}OFFLINE{%endif%}
+    {%if user.is_owner%}, OWNER{%endif%}
+    {%if user.is_resident%}, RESIDENT{%endif%}
+    {%if user.banned%}, BANNED{%endif%}
+    {%if user.muted%}, MUTED{%endif%}
+    {%if user.harakiri%}, HARAKIRI{%endif%}
+    {%if user.is_moderator%}, MODERATOR{%endif%}
+    {%if user.is_admin%}, ADMIN{%endif%}
+    {%if user.frozen%}, FROZEN{%endif%}
+    {%if user.text_only%}, TEXT{%endif%}
+    {%if user.bot_banned%}, RASCAL{%endif%}
+    </b>
+    Notifications: <b>{% if user.notify_msg or user.notify_slaps or user.notify_replays or user.notify_hugs or user.notify_poll%}
+    {% set pipe = joiner(", ") %}
+    {%if user.notify_msg%}{{ pipe() }}PRIVATES{%endif%}
+    {%if user.notify_slaps%}{{ pipe() }}SLAPS{%endif%}
+    {%if user.notify_hugs%}{{ pipe() }}HUGS{%endif%}
+    {%if user.notify_replays%}{{ pipe() }}REPLIES{%endif%}
+    {%if user.notify_poll%}{{ pipe() }}POLLS{%endif%}
+    {%else%}OFF{%endif%}</b>
+    {% if user._id|string in iam.ignores %}
+
+    🚯 Anda melarang: <b>{% set pipe = joiner(", ") %}{% set ignores = iam.ignores[user._id|string] %}
+    {%if 'msg' in ignores%}{{ pipe() }}PRIVATES{%endif%}
+    {%if 'slap' in ignores%}{{ pipe() }}SLAPS{%endif%}
+    {%if 'hug' in ignores%}{{ pipe() }}HUGS{%endif%}
+    {%if 'replay' in ignores%}{{ pipe() }}REPLIES{%endif%}
+    {%if 'text' in ignores%}{{ pipe() }}MESSAGES{%endif%}</b>
+    {%endif%}
+
+    {%if inviter %}<b>By inviting:</b> {{T('common/symbol', user=inviter)}} #{{inviter.code_display}} {{inviter.nick}}
+
+    {%endif%}
+    {%if user.ach%}
+    <b>Achievements:</b>
+    {%for k, v in user.ach.items()|reverse%}
+    {{k}} - {{v}}
+    {% if not all_ach and loop.index == max_ach and user.ach|count > max_ach%}...{% break %}{% endif %}
+    {%endfor%}
+    {%else%}
+    <b>No achievements.</b>
+    {%endif%}
+
+invite:
+  invalid: |
+    <b>[BOT]</b> Undangan ini telah digunakan oleh seseorang atau waktunya telah habis.
+  closed: |
+    <b>[BOT]</b> Ini adalah obrolan tertutup. Anda harus memiliki undangan.
+  new: |
+    <b>[BOT]</b> Undangan baru sudah siap: https://t.me/{{bot}}?start=invite_{{invite}}
+  forbidden: |
+    <b>[BOT]</b> Perintah ini tidak tersedia untuk Anda.
+
+poll:
+  start: |
+    <b>[BOT]</b> Anda memulai sebuah {%if inline%}inline poll{%else%}poll{%endif%}.
+
+    Masukkan pertanyaan dan jawaban satu per baris seperti ini:
+
+    <i>Question?
+    Answer1
+    Answer2
+    Answer3</i>
+
+    {%if inline%}Polling akan berlaku satu jam. {%endif%}Click /cancel untuk membatalkan.
+  started: <b>[BOT]</b> Polling dimulai! Untuk mengakhiri polling click /polldone.
+  inline: |
+    <b>[Bot]</b> #{{poll.code_display}} {{poll.nick}} mengajukan pertanyaan:
+    <i>{{poll.question}}</i>
+
+    {%for v in poll.variants%}
+    {%if loop.index0==selected%}✔{%endif%}{{map[loop.index0]}} - <i>{{v}}</i>
+    {%endfor%}
+  poll: |
+    {%if started%}<b>[Bot]</b> Jajak pendapat diumumkan!{%else%}<b>[BOT]</b>{%endif%} #{{user.code_display}} {{user.nick}} mengajukan pertanyaan:
+    <i>{{poll.question}}</i>
+
+    {%if vote%}Choose an option:{%endif%}
+    {%for v in poll.variants%}
+    {{map[loop.index0]}} - <i>{{v}}</i>
+    {%endfor%}
+    {%if vote_user%}
+
+    Anda memilih:
+
+    {%if str(vote_user._id) in poll.answers%}{{poll.variants[poll.answers[str(vote_user._id)]]}}{%else%}<i>You haven't voted yet.</i>{%endif%}
+    {%endif%}
+  done: |
+    <b>[Bot]</b> Results of poll #{{user.code_display}} {{user.nick}}:
+    <i>{{poll.question}}</i>
+
+    {%for s, p in poll.total%}
+    {{map[loop.index0]}} {{p}}%({{s}}) - <i>{{poll.variants[loop.index0]}}</i>
+    {%endfor%}
+
+    Jumlah pemilih: {{poll.answers|length}} users.
+
+  notification:
+    start: |
+      <b>[BOT]</b> In chat{%if bot%} @{{bot}}{%endif%} polling diumumkan! #{{user.code_display}} {{user.nick}} mengajukan pertanyaan:
+      <i>{{poll.question}}</i>
+    chat: |
+      <b>[Bot]</b> Jajak pendapat aktif! #{{user.code_display}} {{user.nick}} mengajukan pertanyaan:
+
+      <i>{{poll.question}}</i>
+
+      Anda dapat memilih menggunakan perintah /vote.
+  canceled: |
+    <b>[BOT]</b> Mulai{%if inline%}inline poll{%else%}poll{%endif%} dibatalkan.
+  error: |
+    <b>[BOT]</b> {%if inline%}Inline poll{%else%}Poll{%endif%} harus berisi dari 2 sampai 10 opsi respons.
+    Coba lagi atau klik /cancel untuk membatalkan.
+  text_only: |
+    <b>[BOT]</b> Gunakan teks saja.
+  not_active_inline: |
+    Jajak pendapat tidak aktif.
+  not_active: |
+    <b>[BOT]</b> Jajak pendapat tidak aktif. Untuk memulai jajak pendapat Anda, gunakan perintah /poll.
+  vote_ok: |
+    Suara Anda dihitung.
+  done_fail: |
+    <b>[BOT]</b> Hanya moderator atau pemilik jajak pendapat yang dapat mengakhiri jajak pendapat.
+  alredy_active: |
+    <b>[BOT]</b> Polling sudah aktif. #{{user.code_display}} {{user.nick}} mengajukan pertanyaan:
+    <i>{{poll.question}}</i>
+
+    Sudah memilih {{poll.answers|length}} pengguna.
+    Untuk memilih gunakan perintah /vote.
+  in_progress: |
+    <b>[BOT]</b> Seseorang sudah memulai jajak pendapat tetapi belum menghentikannya. Anda harus menunggu.
+  vote_ended: |
+    Jajak pendapat ini telah berakhir.
+
+list:
+  kb:
+    more: ⏬ Tunjukkan semua ⏬
+    short: ⏫ Memperkecil ⏫
+  text: |
+    <b>[BOT]</b> <i>{{online}}</i>(of <i>{{all}}</i>) users in chat:
+
+    {%for u, m, h, d in users%}
+    {{T('common/luna', minutes=m, hours=h, days=d)}}{{T('common/symbol', user=u)}}#{{u.code_display}} {{u.nick}}
+    {%endfor%}
+
+last:
+  text: |
+    <b>[BOT]</b> Baru-baru ini keluar:
+
+    {%for u in users%}
+    {{T('common/symbol', user=u)}}#{{u.code_display}} {{u.nick}}, {{u.last_activity|elapsed()}}
+    {%endfor%}
+
+search:
+  text: |
+    <b>[BOT]</b> Hasil Pencarian:
+
+    {%for u in users%}
+    {{T('common/symbol', user=u)}}#{{u.code_display}} {{u.nick}}, {{u.last_activity|elapsed()}}
+    {%endfor%}
+    {%if too_many%}
+
+    <i>Terlalu banyak akun yang ditemukan. Tentukan pertanyaan Anda.</i>{%endif%}
+  nothing: |
+    <b>[BOT]</b> Tidak ada yang ditemukan.
+
+message:
+  text: |
+    {%if hidden%}<b>$</b> {%endif%}{%if edit%}<b>&</b> {%endif%}{%if text%}{{user.nick}}:  {{text}}{%else%}<i>{{user.nick}}</i>{%endif%}
+  me: |
+    <b>{%if edit%}& {%endif%}*</b> <i>{{user.nick}}  {{text}}</i>
+
+  hidden:
+    kb:
+      show: |
+        👀 Menunjukkan
+    photo: |
+      Foto tersembunyi dari #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
+    document: |
+      Dokumen tersembunyi dari #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
+    video: |
+      Video tersembunyi dari #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
+    audio: |
+      Audio tersembunyi dari #{{user.code_display}} {{user.nick}}{%if caption%}:  <tg-spoiler>{{caption}}</tg-spoiler>{%else%}.{%endif%}
+  edition:
+    noresident: |
+      <b>[BOT]</b> Hanya penduduk yang dapat mengedit pesan.
+    forbidden: |
+      <b>[BOT]</b> Tidak dapat mengedit pesan ini.
+    timeout: |
+      <b>[BOT]</b> Batas waktu pengeditan pesan.
+  not_sent: |
+    <b>[BOT]</b> Bot tidak mengirim hal seperti itu.
+  flood: |
+    <b>[BOT]</b> Terlalu banyak pesan! Tunggu sebentar sebelum menulis lebih banyak!
+  filtered: |
+    <b>[Bot]</b> Sangat menyesal, tetapi Anda tidak dapat mengirim tautan!
+  stickers_too_fast: |
+    <b>[Bot]</b> Terlalu banyak stiker! Tunggu {{seconds}} detik lagi!
+  text_only: |
+    <b>[BOT]</b> Anda dibatasi hanya untuk teks.
+  albums_not_allowed: |
+    <b>[BOT]</b> Maaf, tidak ada cara untuk mengirim album ke obrolan ini.
+  notification: |
+    <b>[BOT]</b> Balas dari #{{user.code_display}} {{user.nick}}{%if bot%} dalam obrolan @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+  forbid: |
+    <b>[BOT]</b> Anda (atau pengguna ini) dilarang membalas pesannya. Pesan Anda tidak terkirim. 🤷‍♂️
+
+harakiri:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} membuat harakiri dan tidak bisa kembali untuk mengobrol {{user.harakiri_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Kamu membuat harakiri dan Anda dapat kembali ke chan in {{user.harakiri_till|remaining(show_seconds=True)}}.
+  fail: |
+    <b>[BOT]</b> Gagal.
+    Agar perintah ini berfungsi, masukkan /harakiri dan jumlah menit (dari 1 ke 10080) atau R untuk bermain game.
+nick:
+  enter: |
+    <b>[BOT]</b> Nick Anda sekarang - {{user.nick}}
+
+    Masukkan nick baru atau tekan /cancel untuk membatalkan.
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{old_nick}} nick diganti {{user.nick}}
+  bad: |
+    <b>[BOT]</b> Nick ini tidak cocok.
+  canceled: |
+    <b>[BOT]</b> Perubahan Nick dibatalkan.
+  frozen: |
+    <b>[BOT]</b> Anda tidak diperbolehkan mengubah nama panggilan Anda.
+  taken: |
+    <b>[BOT]</b> Nick ini sudah diambil{%if taken_by%} by #{{taken_by.code_display}} {{taken_by.nick}}{%endif%}.
+  long: |
+    <b>[BOT]</b> Nick terlalu panjang.
+  msg: |
+    <b>[BOT]</b> Nick baru Anda - {{user.nick}}.
+
+notify:
+  kb:
+    hugs: |
+      {%if user.notify_hugs%}✅{%else%}❌{%endif%} Hugs
+    msg: |
+      {%if user.notify_msg%}✅{%else%}❌{%endif%} Privates
+    poll: |
+      {%if user.notify_poll%}✅{%else%}❌{%endif%} Polls
+    replays: |
+      {%if user.notify_replays%}✅{%else%}❌{%endif%} Replies
+    slaps: |
+      {%if user.notify_slaps%}✅{%else%}❌{%endif%} Slaps
+    timeout: |
+      {%if user.notify_timeout == val%}✅ {%else%}❌{%endif%}{{val}}
+  text: |
+    <b>[BOT]</b> Pengaturan notifikasi Anda:
+  goto: |
+    <b>[BOT]</b> Untuk menerima notifikasi dari obrolan, Anda perlu menggunakan bot @{{bot}}.
+  help: |
+    <b>[BOT]</b> Bot ini mengirimkan notifikasi ketika seseorang membalas pesan Anda atau menulis pesan pribadi @{{bot}}.
+
+    Perhatian, notifikasi balasan itu hanya berfungsi saat Anda sedang mengobrol. Notifikasi untuk pesan pribadi dan trout selalu berfungsi.
+
+    Untuk mengatur notifikasi, klik - /settings.
+  disabled: |
+    <b>[BOT]</b> Semua notifikasi dimatikan.
+  unknown: |
+    <b>[BOT]</b> Aku belum mengenalmu. Untuk menggunakan bot ini, login terlebih dahulu ke @{{bot}}.
+
+owner:
+  options:
+    state: |
+      <b>[BOT]</b> Pengaturan Chat:
+
+      🔹 <b>closed</b> - obrolan tertutup (masuk hanya dengan undangan).
+      Possible values: True, False.
+      Current value: <b>{{options.closed}}</b>.
+
+      🔹 <b>invite_allowed</b> - yang dapat mengundang pengguna baru.
+      Possible values: semua, pengguna, moderator, admin, pemilik.
+      Current value: <b>{{options.invite_allowed}}</b>.
+
+      🔹 <b>lang</b> - bahasa obrolan.
+      Possible values: {%for l in langs%}{{l}}{%if not loop.last%}, {%endif%}{%endfor%}.
+      Current value: <b>{{options.lang}}</b>.
+
+      🔹 <b>rules</b> - aturan obrolan.
+      Html-formatting dapat digunakan. Tag harus ditutup. Tag terlampir tidak berfungsi. Jika ada kesalahan dalam tag, perintah tidak akan berfungsi.
+      Current value: memukul /rules.
+
+      🔹 <b>silent_start</b> - jangan tampilkan pesan awal dalam obrolan.
+      Current value: <b>{{options.silent_start}}</b>.
+
+      🔹 <b>silent_stop</b> - jangan tampilkan pesan berhenti di obrolan.
+      Current value: <b>{{options.silent_stop}}</b>.
+
+      🔹 <b>silent_cmds</b> - izinkan gunakan perintah admin diam.
+      Current value: <b>{{options.silent_cmds}}</b>.
+
+      🔹 <b>filter_albums</b> - menyaring album.
+      Current value: <b>{{options.filter_albums}}</b>.
+
+      🔹 <b>new_textual</b> - pendatang baru akan memiliki status TEXT.
+      Current value: <b>{{options.new_textual}}</b>.
+      
+      🔹 <b>delete_owner</b> - saat menghapus, menghapus pesan juga dari pengirim.
+      Current value: <b>{{options.delete_owner}}</b>.
+    ok: |
+      <b>[BOT]</b> Setelan telah disimpan.
+  admins:
+    added: |
+      <b>[BOT]</b> Pengguna #{{user.code_display}} {{user.nick}} berhasil ditambahkan ke admin.
+    removed: |
+      <b>[BOT]</b> Pengguna #{{user.code_display}} {{user.nick}} berhasil dihapus dari admin.
+
+admin:
+  moderators:
+    added: |
+      <b>[BOT]</b> Pengguna #{{user.code_display}} {{user.nick}} berhasil ditambahkan ke moderator.
+    removed: |
+      <b>[BOT]</b> Pengguna #{{user.code_display}} {{user.nick}} berhasil dihapus dari moderator.
+  sethugslaphelp: |
+    <b>[BOT]</b> Untuk mengatur pribadi pelukan / tamparan silakan gunakan berikut syintax:
+
+    /sethug #CODE teks pelukan
+    /setslap #CODE teks tamparan
+
+    Teks dapat berisi placeholder dan harus berisi yang benar html-formatting. Misalnya:
+
+    <code>&lt;b&gt; *&lt;/b&gt; &lt;i&gt;#$from_code $from_nick hugs #$to_code $to_nick.&lt;/i&gt;</code>
+  sethug: |
+    {%if text%}
+    <b>[BOT]</b> Pelukan pribadi untuk #{{user.code_display}} {{user.nick}} telah berhasil mengatur:
+
+    {{text}}
+    {%else%}
+    <b>[BOT]</b> Pelukan pribadi untuk #{{user.code_display}} {{user.nick}} telah dihapus.
+    {%endif%}
+  setslap: |
+    {%if text%}
+    <b>[BOT]</b> Tamparan pribadi untuk #{{user.code_display}} {{user.nick}} telah berhasil diatur:
+
+    {{text}}
+    {%else%}
+    <b>[BOT]</b> Tamparan pribadi untuk #{{user.code_display}} {{user.nick}} telah dihapus.
+    {%endif%}
+  unbaned: |
+    <b>[BOT]</b> Pengguna #{{user.code_display}} {{user.nick}} berhasil dilarang.
+  changedid: |
+    <b>[BOT]</b> ID pengguna #{{user.code_display}} {{user.nick}} berhasil diubah menjadi #{{new_code}}.
+  say: |
+    <b>[Bot]</b> {{text}}
+  poll_killed: |
+    <b>[BOT]</b> Jajak pendapat terbunuh.
+
+moderator:
+  kb:
+    freeze: |
+      ❄️ Membekukan
+    kick: |
+      👞 Menendang
+    mute: |
+      🙊 {{val}}
+    resident: |
+      ⚓️ Penduduk
+    textual: |
+      🔤 Tekstual
+  moderation: |
+    👮 Moderator untuk #{{user.code_display}} {{user.nick}}.
+
+    {%for l in log%}
+    {{l.time.strftime('%d/%m/%Y %H:%M')}} {%if l.by%}#{{l.by.code_display}} {%endif%}<b>{{l.action.upper()}}</b> <i>{%if l.data.till%}{{l.data.till|remaining(show_seconds=True, from_time=l.time)}}{%endif%}
+    {%if l.data.nick%}{{l.data.nick}}{%endif%}
+    {%if l.data.id%}#{{l.data.id}}{%endif%}
+    {%if l.data.status is defined%}{%if l.data.status%}ON{%else%}OFF{%endif%}{%endif%}
+    {%if l.data.achievement%}{{l.data.achievement}} - {{l.data.text}}{%endif%}</i>
+    {%endfor%}
+  done: |
+    <b>[BOT]</b> Pengguna #{{user.code_display}} {{user.nick}} updated successfully.
+
+achievement:
+  added: |
+    <b>[Bot]</b> User #{{user.code_display}} {{user.nick}} mendapat prestasi baru:
+
+    {{symbol}} - {{text}}
+  removed: |
+    <b>[Bot]</b> User #{{user.code_display}} {{user.nick}} kehilangan prestasi:
+
+    {{symbol}} - {{text}}
+
+ban:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} dilarang selamanya!
+  text: |
+    <b>[BOT]</b> Saya sangat menyesal, Anda dilarang! Sepertinya perilakumu buruk. Jangan menulis di sini lagi.
+
+mute:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} is muted for {{user.muted_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Suara Anda dibatalkan dalam obrolan untuk {{user.muted_till|remaining(show_seconds=True)}}.
+
+    Pesan, gambar, dan stiker Anda aren''t ditampilkan dalam obrolan, bot tidak menunjukkannya Anda telah masuk atau keluar. Tunggu sampai waktu habis dan jangan main-main lagi.
+
+    Perintah Anda yang tersedia: /start, /stop and /rules.
+
+kick:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ditendang untuk {{user.kicked_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Anda ditendang. Anda bisa masuk kembali {{user.kicked_till|remaining(show_seconds=True)}}.
+
+rename:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} diubah namanya menjadi {{nick}}.
+  text: |
+    <b>[BOT]</b> Anda diganti namanya. Nick baru Anda - {{nick}}.
+
+pong: |
+  <b>[BOT]</b> <i>pong</i>.
+
+rules: |
+  <b>[BOT] Aturan obrolan:</b>
+
+  {{rules}}
+
+private:
+  kb:
+    reply: |
+      ✏️ Membalas
+    receive: |
+      📩 Menerima
+
+  notification: |
+    <b>[BOT]</b> Anda memiliki pesan pribadi dari #{{user.code_display}} {{user.nick}}{%if bot%} dalam obrolan @{{bot}}{%endif%}.
+    {%if offline%}Masukkan obrolan(/start), untuk mendapatkan.{%endif%}
+  empty: |
+    {%if not callback%}<b>[BOT]</b> {%endif%}Tidak ada pesan pribadi untuk Anda.
+  remind: |
+    <b>[BOT]</b> Ada {{num}} pesan pribadi menunggu Anda.
+
+  send:
+    canceled: |
+      <b>[BOT]</b> Pengiriman pesan pribadi dibatalkan.
+    fail: |
+      <b>[BOT]</b> Pengiriman gagal.
+    fail_type: |
+      <b>[BOT]</b> Tidak dapat mengirim pesan ini.
+    fail_user: |
+      <b>[BOT]</b> Tidak dapat menemukan pengguna ini.
+    ok: |
+      <b>[BOT]</b> Pesan Anda ke #{{user.code_display}} {{user.nick}} berhasil dikirim.
+    select: |
+      <b>[BOT]</b> Pilih pengguna.
+    type: |
+      <b>[BOT]</b> Ketik dan kirim pesan Anda dan itu akan dikirim ke pengguna #{{user.code_display}} {{user.nick}}.
+
+  receive:
+    message: |
+      <b>[BOT]</b> Pesan pribadi dari #{{user.code_display}} {{user.nick}} pada {{time}}:
+
+      {{message}}
+    sticker: |
+      <b>[BOT]</b> Pesan pribadi(<b>sticker</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+    audio: |
+      <b>[BOT]</b> Pesan pribadi(<b>audio</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+    document: |
+      <b>[BOT]</b> Pesan pribadi(<b>document</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+    photo: |
+      <b>[BOT]</b> Pesan pribadi(<b>photo</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+    video: |
+      <b>[BOT]</b> Pesan pribadi(<b>video</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+    video_note: |
+      <b>[BOT]</b> Pesan pribadi(<b>video note</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+    voice: |
+      <b>[BOT]</b> Pesan pribadi(<b>voice</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+
+slap:
+  all: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} menampar </i>#{{uto.code_display}}<i> {{uto.nick}} sekitar sedikit dengan trout besar{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+  list: |
+    <b>[BOT]</b> Pilih pengguna untuk ditampar:
+  slow: |
+    <b>[BOT]</b> Tidak perlu terlalu sering mengepakkan ikan trout!
+  notification: |
+    <b>[BOT]</b> Tampar dari #{{user.code_display}} {{user.nick}}{%if bot%} dalam obrolan @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+
+hug:
+  all: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} pelukan </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+  list: |
+    <b>[BOT]</b> Pilih pengguna untuk dipeluk:
+  slow: |
+    <b>[BOT]</b> Tidak perlu terlalu sering berpelukan!
+  notification: |
+    <b>[BOT]</b> Pelukan dari #{{user.code_display}} {{user.nick}}{%if bot%} dalam obrolan @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+
+start:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} enteres chat.{%if new%} <b>He's new!</b>{%endif%}
+  text: |
+    <b>[BOT]</b> Anda memasuki obrolan. Nick Anda - {{user.nick}}. Untuk meninggalkan obrolan tekan /stop.
+  welcome: |
+    <b>[BOT]</b> Selamat datang di obrolan anonim.
+    Untuk meninggalkan cetakan obrolan /stop
+
+    Ada nick acak yang dihasilkan untuk Anda - {{user.nick}}.
+    Jika Anda tidak menyukainya, Anda dapat membuatnya sendiri dan mengaturnya dengan perintah /nick
+    <b>Selamat mengobrol!</b>
+  started: |
+    <b>[BOT]</b> Sudah di obrolan. Untuk meninggalkan obrolan tekan /stop.
+  not_started: |
+    <b>[BOT]</b> Anda tidak sedang mengobrol. Untuk memulai tekan /start.
+
+stop:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} meninggalkan obrolan.{%if banned%} <b>Bajingan ini telah melarang bot!</b>{%endif%}{%if cleaner%} <b>Dia diam lama sekali.</b>{%endif%}
+  text: |
+    <b>[BOT]</b> Anda meninggalkan obrolan. Segera kembali!
+
+    Untuk masuk lagi - tekan /start.
