@@ -98,7 +98,7 @@ hug:
       32: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} притягивается с объятьями к #{{uto.code_display}} {{uto.nick}}, почувствовав силу магнитного поля{%if hash%}(#{{hash}}){%endif%}.</i>
       33: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} накидывается с объятьями на #{{uto.code_display}} {{uto.nick}}, но они однополярны и <лучше_вставить_ник_обнимающего> улетает в космос{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} накидывается с объятьями на..., но они однополярны и #{{uto.code_display}} {{uto.nick}} улетает в космос{%if hash%}(#{{hash}}){%endif%}.</i>
       34: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} и #{{uto.code_display}} {{uto.nick}} сливаются в объятьях как два оголенных провода, и искры сыплются у них из глаз{%if hash%}(#{{hash}}){%endif%}.</i>
       35: |

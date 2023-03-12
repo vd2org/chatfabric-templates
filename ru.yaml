@@ -564,7 +564,7 @@ private:
   empty: |
     {%if not callback%}<b>[BOT]</b> {%endif%}Для тебя нет личных сообщений.
   remind: |
-    <b>[BOT]</b> Тебя ждут {{num}} личных(?) сообщений.
+    <b>[BOT]</b> Тебя ждут личные сообщения - {{num}}.
 
   send:
     canceled: |
