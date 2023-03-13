@@ -240,6 +240,10 @@ hug:
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} обещает подарить все звёзды космоса #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       102: |
         <b> *</b> <i>У #{{ufrom.code_display}} {{ufrom.nick}} были слишком короткие шортики, и это очень смутило #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+      103: |
+      <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} делает фото ног, чтобы отправить #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+
+
 
 ban:
   all:
