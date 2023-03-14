@@ -90,9 +90,9 @@ hug:
       27: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}}, возжелав почувствовать тепло чужого тела, накидывается с объятиями на #{{uto.code_display}} {{uto.nick}}, разрывая на себе одежду{%if hash%}(#{{hash}}){%endif%}.</i>
       28: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} - скромняшка, нежно обнимает ногу #{{uto.code_display}} {{uto.nick}} в надежде, что это останется незамеченным{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} — скромняшка, нежно обнимает ногу #{{uto.code_display}} {{uto.nick}} в надежде, что это останется незамеченным{%if hash%}(#{{hash}}){%endif%}.</i>
       29: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} - пуританин, обнимает #{{uto.code_display}} {{uto.nick}} на расстоянии вытянутых рук{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} — пуританин, обнимает #{{uto.code_display}} {{uto.nick}} на расстоянии вытянутых рук{%if hash%}(#{{hash}}){%endif%}.</i>
       30: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} очень удивляется, зачем #{{uto.code_display}} {{uto.nick}} прячет в кармане банан перед обнимашками{%if hash%}(#{{hash}}){%endif%}.</i>
       31: |
@@ -128,9 +128,9 @@ hug:
       46: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} обнимает #{{uto.code_display}} {{uto.nick}}, но понимает, что ему этого мало, и ищет глазами кого бы обнять ещё{%if hash%}(#{{hash}}){%endif%}.</i>
       47: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} считает что объятия - это секс в одежде, обнимая #{{uto.code_display}} {{uto.nick}} понимает, что его хватит ещё на пару раз{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} считает что объятия — это секс в одежде, обнимая #{{uto.code_display}} {{uto.nick}} понимает, что его хватит ещё на пару раз{%if hash%}(#{{hash}}){%endif%}.</i>
       48: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} - чемпион чатика по обнимашкам, доказывает свое превосходство, обнимая #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} — чемпион чатика по обнимашкам, доказывает свое превосходство, обнимая #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       49: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} думает, что нельзя объять того, кого нет и проверяет существование #{{uto.code_display}} {{uto.nick}} на деле{%if hash%}(#{{hash}}){%endif%}.</i>
       50: |
@@ -182,7 +182,7 @@ hug:
       73: |
         <b> *</b> <i>Когда Всевышний Бот придумал обнимашки, никто не ожидал, что #{{ufrom.code_display}} {{ufrom.nick}} будет так страстно обнимать #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       74: |
-        <b> *</b> <i>Жить нужно в удовольствие - считает #{{ufrom.code_display}} {{ufrom.nick}}, с удовольствием обнимая #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>Жить нужно в удовольствие — считает #{{ufrom.code_display}} {{ufrom.nick}}, с удовольствием обнимая #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       75: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} нежно обнимает #{{uto.code_display}} {{uto.nick}} за талию, гладит по коленке, они начинают раздеваться... Несовершеннолетним просьба отвернуться{%if hash%}(#{{hash}}){%endif%}!</i>
       76: |
@@ -198,17 +198,17 @@ hug:
       81: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} умеет шевелить правым ухом очень активно и когда-то давно хотел в шутку обнять кого-нибудь таким образом. Сегодня эта мечта исполнится с #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       82: |
-        <b> *</b> <i>Бесцельно блуждая по чату #{{uto.code_display}} {{uto.nick}} попадает в обнимашковую западню #{{ufrom.code_display}} {{ufrom.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>Бесцельно блуждая по чату, #{{uto.code_display}} {{uto.nick}} попадает в обнимашковую западню #{{ufrom.code_display}} {{ufrom.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       83: |
         <b> *</b> <i>#{{uto.code_display}} {{uto.nick}} складывает обнимашку #{{ufrom.code_display}} {{ufrom.nick}} в копилку знаков внимания{%if hash%}(#{{hash}}){%endif%}.</i>
       84: |
-        <b> *</b> <i>Здо́рово жить - говорит Елена Малышева. Но если #{{ufrom.code_display}} {{ufrom.nick}} не обнимет #{{uto.code_display}} {{uto.nick}} хотя бы раз в сутки - жить совсем не здо́рово{%if hash%}(#{{hash}}){%endif%}!</i>
+        <b> *</b> <i>Здо́рово жить — говорит Елена Малышева. Но если #{{ufrom.code_display}} {{ufrom.nick}} не обнимет #{{uto.code_display}} {{uto.nick}} хотя бы раз в сутки — жить совсем не здо́рово{%if hash%}(#{{hash}}){%endif%}!</i>
       85: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}}, заметив в дальнем углу бара #{{uto.code_display}} {{uto.nick}}, тушит в пепельнице сигару и направляется в закуток, чтобы потискаться в приватной обстановке{%if hash%}(#{{hash}}){%endif%}.</i>
       86: |
         <b> *</b> <i>Отринув последние остатки скромности, #{{ufrom.code_display}} {{ufrom.nick}} набрасывается с объятьями на #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       87: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} хочет привлечь внимание #{{uto.code_display}} {{uto.nick}} пуская в ход свои шаловливые пальчики{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} хочет привлечь внимание #{{uto.code_display}} {{uto.nick}}, пуская в ход свои шаловливые пальчики{%if hash%}(#{{hash}}){%endif%}.</i>
       88: |
         <b> *</b> <i>По-отечески, добродушно, без какого-либо подвоха #{{ufrom.code_display}} {{ufrom.nick}} обнимает #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       89: |
@@ -232,7 +232,6 @@ hug:
       98: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} теряет голову из-за #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       99: |
-        <b> *</b> <i> <b> *</b> <i> «Это не норма» — говорит #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.</i> 
         <b> *</b> <i> <b> *</b> <i> «Как тебе такое, Илон Маск?» — спрашивает #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} уносит в космос от обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
       100: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} играет в прятки на раздевание с #{{uto.code_display}} {{uto.nick}}, неловко прячась под носком{%if hash%}(#{{hash}}){%endif%}.</i>
@@ -255,7 +254,7 @@ ban:
       1: |
         <b>[Bot]</b> #{{user.code_display}} {{user.nick}} слишком сильно нажимает кнопку сливного бачка и уносится прочь, отправляя себя в бан.
       2: |
-        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} напевает "Совершать харакири - большое искусство" и вспарывает телеграм клинком бана.
+        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} напевает "Совершать харакири — большое искусство" и вспарывает телеграм клинком бана.
       3: |
         <b>[Bot]</b> #{{user.code_display}} {{user.nick}} бьет молотком по роутеру и банит себя в уютном чатике.
       4: |
@@ -271,7 +270,7 @@ ban:
       9: |
         <b>[Bot]</b> #{{user.code_display}} {{user.nick}} экспериментатор в душе! Думает: "А что будет, если..." и вносит себя в бан-лист уютного чатика.
       10: |
-        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} - мазохист по жизни, даже в уютном чатике умудряется отправить себя в бан.
+        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} — мазохист по жизни, даже в уютном чатике умудряется отправить себя в бан.
       11: |
         <b>[Bot]</b> По пожеланию жителей чатика #{{user.code_display}} {{user.nick}} отправляется на кол в комнату бана.
       12: |
@@ -313,7 +312,7 @@ ban:
       30: |
         <b>[Bot]</b> Стыбзив у Фродо кольцо всевластия, #{{user.code_display}} {{user.nick}}, с криками "моя прелесть!", отправляется жить в пещере бана навечно.
       31: |
-        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} случайно произносит имя того, кого нельзя называть - Авада Кедавра, теперь придется покинуть чат навсегда.
+        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} случайно произносит имя того, кого нельзя называть — Авада Кедавра, теперь придется покинуть чат навсегда.
       32: |
         <b>[Bot]</b> После встречи с тибетскими старейшинами, #{{user.code_display}} {{user.nick}} познает дзен и дает обет вечного молчания, отныне, наполнившись мудростью и просветлением, покидает чат навсегда.
       33: |
@@ -383,7 +382,7 @@ mute:
       13: |
         <b>[Bot]</b> #{{user.code_display}} {{user.nick}} замолкает... Просто замолкает на {{user.muted_till|remaining(show_seconds=True)}}.
       14: |
-        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} считает, что молчание - золото и умолкает на {{user.muted_till|remaining(show_seconds=True)}}.
+        <b>[Bot]</b> #{{user.code_display}} {{user.nick}} считает, что молчание — золото и умолкает на {{user.muted_till|remaining(show_seconds=True)}}.
       15: |
         <b>[Bot]</b> #{{user.code_display}} {{user.nick}} соревнуется в показывании языка с другими жителями чата и проигрывает, придется помолчать {{user.muted_till|remaining(show_seconds=True)}}.
       16: |
