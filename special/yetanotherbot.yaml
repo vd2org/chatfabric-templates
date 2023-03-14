@@ -196,7 +196,7 @@ hug:
       80: |
         <b> *</b> <i>У #{{ufrom.code_display}} {{ufrom.nick}} самый большой обниматор в чатике, сегодня его по достоинству оценит #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       81: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} умеет шевелить правым ухом очень активно и когда-то давно хотел в шутку обнять кого-нибудь таким образом... сегодня эта мечта исполнится с #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} умеет шевелить правым ухом очень активно и когда-то давно хотел в шутку обнять кого-нибудь таким образом. Сегодня эта мечта исполнится с #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       82: |
         <b> *</b> <i>Бесцельно блуждая по чату #{{uto.code_display}} {{uto.nick}} попадает в обнимашковую западню #{{ufrom.code_display}} {{ufrom.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       83: |
@@ -232,8 +232,8 @@ hug:
       98: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} теряет голову из-за #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       99: |
-        <b> *</b> <i> <b> *</b> <i> «Это не норма» — говорит #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.
-        </i> «Как тебе такое, Илон Маск?» — спрашивает #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} уносит в космос от обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i> <b> *</b> <i> «Это не норма» — говорит #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} не хочет обниматься{%if hash%}(#{{hash}}){%endif%}.</i> 
+        <b> *</b> <i> <b> *</b> <i> «Как тебе такое, Илон Маск?» — спрашивает #{{ufrom.code_display}} {{ufrom.nick}}, когда #{{uto.code_display}} {{uto.nick}} уносит в космос от обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
       100: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} играет в прятки на раздевание с #{{uto.code_display}} {{uto.nick}}, неловко прячась под носком{%if hash%}(#{{hash}}){%endif%}.</i>
       101: |
@@ -241,7 +241,7 @@ hug:
       102: |
         <b> *</b> <i>У #{{ufrom.code_display}} {{ufrom.nick}} были слишком короткие шортики, и это очень смутило #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       103: |
-      <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} делает фото ног, чтобы отправить #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
+       <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} делает фото ног, чтобы отправить #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
 
 
 
