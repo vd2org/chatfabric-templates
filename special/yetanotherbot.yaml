@@ -150,13 +150,13 @@ hug:
       57: |
         <b> *</b> <i>Если бы в РКН увидели, как #{{ufrom.code_display}} {{ufrom.nick}} жарко и страстно обнимет #{{uto.code_display}} {{uto.nick}}, то запретили бы это непотребство{%if hash%}(#{{hash}}){%endif%}.</i>
       58: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} решается всё таки придушить #{{uto.code_display}} {{uto.nick}}, в надежде, что именно этого тот и хочет{%if hash%}(#{{hash}}){%endif%}.</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} решается всё-таки придушить #{{uto.code_display}} {{uto.nick}}, в надежде, что именно этого тот и хочет{%if hash%}(#{{hash}}){%endif%}.</i>
       59: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} незаметно кладёт в карман #{{uto.code_display}} {{uto.nick}} записку с временем и адресом следующего места обнимашек{%if hash%}(#{{hash}}){%endif%}.</i>
       60: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} подмигивает #{{uto.code_display}} {{uto.nick}} и оба понимают, что продолжение такого немого диалога следует провести в более уединённой обстановке{%if hash%}(#{{hash}}){%endif%}.</i>
       61: |
-        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} нежно обнимает #{{uto.code_display}} {{uto.nick}}, кажется, это любовь{%if hash%}(#{{hash}}){%endif%}!</i>
+        <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}} нежно обнимает #{{uto.code_display}} {{uto.nick}}. Кажется, это любовь{%if hash%}(#{{hash}}){%endif%}!</i>
       62: |
         <b> *</b> <i>Когда Всевышний Бот придумал обнимашки, никто не ожидал, что #{{ufrom.code_display}} {{ufrom.nick}} будет так страстно обнимать #{{uto.code_display}} {{uto.nick}}{%if hash%}(#{{hash}}){%endif%}.</i>
       63: |
@@ -180,7 +180,7 @@ hug:
       72: |
         <b> *</b> <i>#{{uto.code_display}} {{uto.nick}} складывает обнимашку #{{ufrom.code_display}} {{ufrom.nick}} в копилку знаков внимания{%if hash%}(#{{hash}}){%endif%}.</i>
       73: |
-        <b> *</b> <i>Здо́рово жить — говорит Елена Малышева. Но если #{{ufrom.code_display}} {{ufrom.nick}} не обнимет #{{uto.code_display}} {{uto.nick}} хотя бы раз в сутки — жить совсем не здо́рово{%if hash%}(#{{hash}}){%endif%}!</i>
+        <b> *</b> <i>«Здо́рово жить» — говорит Елена Малышева. Но если #{{ufrom.code_display}} {{ufrom.nick}} не обнимет #{{uto.code_display}} {{uto.nick}} хотя бы раз в сутки — жить совсем не здо́рово{%if hash%}(#{{hash}}){%endif%}!</i>
       74: |
         <b> *</b> <i>#{{ufrom.code_display}} {{ufrom.nick}}, заметив в дальнем углу бара #{{uto.code_display}} {{uto.nick}}, тушит в пепельнице сигару и направляется в закуток, чтобы потискаться в приватной обстановке{%if hash%}(#{{hash}}){%endif%}.</i>
       75: |
