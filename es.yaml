@@ -1,0 +1,523 @@
+about: |
+  <b>[BOT]</b> <b>{{bot_name}}</b>.
+  <b>Uptime:</b> {{started|elapsed(show_seconds=True)}}.
+  <b>Msgs:</b> {{count}}.
+  <b>Msg rate:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
+  El bot se construyó con la plataforma @ChatFactoryBot, versión <i>{{version}}</i>.
+  Si tienes cuestiones sobre como usar la plataforma o los bots desarrollados - contacta en inglés con @IAmRocket.
+  Noticias de la plataforma: @ChatFactory.
+help: |
+  <b>[BOT]</b> Comandos soportados:
+  /start - <i>Entrar al chat anónimo</i>
+  /stop - <i>Salir del chat</i>
+  /nick - <i>Cambiar alias</i>
+  /list - <i>Lista de los usuarios del chat</i>
+  % - <i>Escribir en tercera persona</i>
+  $ - <i>Escribir mensaje oculto</i>
+  /last - <i>Mostrar los últimos usuarios en irse</i>
+  /msg - <i>Enviar mensaje privado</i>
+  /getmsg - <i>Recibir mensajes privados</i>
+  /notify - <i>Notificaciones de los mensajes en el chat</i>
+  /poll - <i>Crear una encuesta</i>
+  /polldone - <i>Terminar la encuesta</i>
+  /vote - <i>Votar</i>
+  {%if options.closed%}/invite - <i>Crear una invitación</i>{{"\n"}}{%endif%}
+  /info [CÓDIGO] - <i>Ver información de un usuario</i>
+  /slap [CÓDIGO] - <i>Abofetear a un usuario</i>
+  /search [TEXTO] - <i>Buscar a un usuario por alias</i>
+  <i>/harakiri</i> [MINUTOS|R] - <i>Hacer un harakiri!</i>
+  /ping - <i>Testear la operatividad del bot</i>
+  /rules - <i>Reglas del chat</i>
+  /about - <i>Información sobre el bot</i>
+  {% if user.is_moderator or user.is_admin or user._id == owner %}
+  <b>Comandos del moderador:</b>
+  /mute [CÓDIGO] [MINUTOS] - <i>Silenciar a un usuario</i>
+  {%if options.silent_cmds%}/sban, {%endif%}/ban [CÓDIGO] - <i>Bloquear a un usuario</i>
+  /rename [CÓDIGO] [ALIAS] - <i>Renombrar a un usuario</i>
+  /addach [CÓDIGO] [LOGRO(max 4 caracteres)] [TEXTO] - <i>Conceder un logro</i>
+  /rmach [CÓDIGO] [LOGRO] - <i>Retirar logro</i>
+  /kick [CÓDIGO] - <i>Expulsar a un usuario</i>
+  /resident [CÓDIGO] - <i>Cambiar el estatus de residente</i>
+  /freeze [CÓDIGO] - <i>Bloquear cambio de alias</i>
+  /textual [CÓDIGO] - <i>Modo de solo texto</i>
+  /del - <i>Eliminar mensaje</i>
+  {%endif%}{%if user.is_admin or user._id == owner%}
+  <b>Comandos del administrador:</b>
+  /changeid [CÓDIGO] [NUEVO] - <i>Cambiar código de usuario</i>
+  /addmod [CÓDIGO] - <i>Añadir moderador</i>
+  /rmmod [CÓDIGO] - <i>Eliminar moderador</i>
+  /unban [CÓDIGO] - <i>Desbloquear usuario</i>
+  /say [TEXTO] - <i>Hablar desde el bot</i>
+  /poll_kill - <i>Encuesta de la muerte(¡Peligro!)</i>
+  {%endif%}{%if user._id == owner%}
+  <b>Comandos del propietario:</b>
+  /addadmin [CÓDIGO] - <i>Añadir administrador</i>
+  /rmadmin [CÓDIGO] - <i>Eliminar administrador</i>
+  /options - <i>Ver los ajustes del chat</i>
+  /option [NOMBRE] [VALOR] - <i>Cambiar ajuste del chat</i>
+  {%endif%}
+  La mayoría de los comandos pueden ser aplicados haciendo respuesta en lugar de introducir el CÓDIGO.
+como:
+  kb:
+    cancel: |
+      ❌ Cancelar
+    cancels: |
+      ❌
+    back: |
+      ↩️
+  symbol: |
+    {%if user.is_owner%}✳️{%elif user.is_admin%}💢{%elif user.is_moderator%}🔆{%elif user.is_resident%}✅{%else%}🆕{%endif%}
+  luna: |
+    {%if minutes < 5 and days <= 0%}🌕{%elif minutes < 60 and days <= 0%}🌖{%elif minutes < 60 * 12 and days <= 0%}🌗{%elif hours < 24 and days <= 0%}🌘{%else%}🌑{%endif%}
+  noresident: |
+    <b>[BOT]</b> Lo siento mucho, pero este comando es solo para los residentes del chat.
+  unknown: |
+    <b>[BOT]</b> No conozco este comando. Pulsa /help, para ver todos los comandos disponibles.
+  fail: |
+    <b>[BOT]</b> No pude. 😔
+  fail_alert: |
+    No pude. 😔
+info:
+  kb:
+    am: |
+      👮
+    msg: |
+      ✉️
+    slap: |
+      ✋️
+    hug: |
+      🤗
+    more: |
+      ⏬
+    less: |
+      ⏫
+    ignore:
+      menu: |
+        🚯
+      msg: |
+        🚯 Prohibir privados
+      slap: |
+        🚯 Prohibir bofetadas
+      hug: |
+        🚯 Prohibir abrazos
+      replay: |
+        🚯 Prohibir respuestas
+      text: |
+        🚯 Ignorar mensajes
+  fail: |
+    <b>[BOT]</b> Usuario no encontrado.
+  text: |
+    <b>[BOT]</b> <b>Información sobre</b> {{T('common/symbol', user=user)}} #{{user.code_display}} {{user.nick}}:
+    Con nosotros <b>{{user.created|elapsed}}</b>
+    Escribió por última vez <b>{{user.last_activity|elapsed(show_seconds=True)}}</b>
+    Status: <b>{%if user.is_active%}ONLINE{%else%}OFFLINE{%endif%}
+    {%if user.is_owner%}, PROPIETARIO{%endif%}
+    {%if user.is_resident%}, RESIDENTE{%endif%}
+    {%if user.banned%}, BLOQUEADO{%endif%}
+    {%if user.muted%}, SILENCIADO{%endif%}
+    {%if user.harakiri%}, SUICIDADO{%endif%}
+    {%if user.is_moderator%}, MODERADOR{%endif%}
+    {%if user.is_admin%}, ADMINISTRADOR{%endif%}
+    {%if user.frozen%}, CONGELADO{%endif%}
+    {%if user.text_only%}, SOLO TEXTO{%endif%}
+    {%if user.bot_banned%}, GRANUJA{%endif%}
+    </b>
+    Notificaciones: <b>{% if user.notify_msg or user.notify_slaps or user.notify_replays or user.notify_hugs or user.notify_poll%}
+    {% set pipe = joiner(", ") %}
+    {%if user.notify_msg%}{{ pipe() }}PRIVADOS{%endif%}
+    {%if user.notify_slaps%}{{ pipe() }}BOFETADAS{%endif%}
+    {%if user.notify_hugs%}{{ pipe() }}ABRAZOS{%endif%}
+    {%if user.notify_replays%}{{ pipe() }}RESPUESTAS{%endif%}
+    {%if user.notify_poll%}{{ pipe() }}ENCUESTAS{%endif%}
+    {%else%}APAGAR{%endif%}</b>
+    {% if user._id|string in iam.ignores %}
+    🚯 Tú prohibiste: <b>{% set pipe = joiner(", ") %}{% set ignores = iam.ignores[user._id|string] %}
+    {%if 'msg' in ignores%}{{ pipe() }}PRIVADOS{%endif%}
+    {%if 'slap' in ignores%}{{ pipe() }}BOFETADAS{%endif%}
+    {%if 'hug' in ignores%}{{ pipe() }}ABRAZOS{%endif%}
+    {%if 'replay' in ignores%}{{ pipe() }}RESPUESTAS{%endif%}
+    {%if 'text' in ignores%}{{ pipe() }}MENSAJES{%endif%}</b>
+    {%endif%}
+    {%if inviter %}<b>By inviting:</b> {{T('common/symbol', user=inviter)}} #{{inviter.code_display}} {{inviter.nick}}
+    {%endif%}
+    {%if user.ach%}
+    <b>Logross:</b>
+    {%for k, v in user.ach.items()|reverse%}
+    {{k}} - {{v}}
+    {% if not all_ach and loop.index == max_ach and user.ach|count > max_ach%}...{% break %}{% endif %}
+    {%endfor%}
+    {%else%}
+    <b>No logros.</b>
+    {%endif%}
+invite:
+  invalid: |
+    <b>[BOT]</b> Esta invitación ya la utilizó alguien o el tiempo expiró.
+  closed: |
+    <b>[BOT]</b> Este chat es privado. Necesitas invitación para entrar.
+  new: |
+    <b>[BOT]</b> NNueva invitación lista: https://t.me/{{bot}}?start=invite_{{invite}}
+  forbidden: |
+    <b>[BOT]</b> Este comando no esta disponible para ti.
+poll:
+  start: |
+    <b>[BOT]</b> Estás iniciando una {%if inline%}inline poll{%else%}encuesta{%endif%}.
+    Introduce la pregunta y las respuestas en lineas como estas:
+    <i>Pregunta?
+    Respuesta1
+    Respuesta2
+    Respuesta3</i>
+    {%if inline%}La encuesta será válida una hora. {%endif%}Click /cancel para cancelar.
+  started: <b>[BOT]</b> Encuesta iniciada! Para detenerla clica en /polldone.
+  inline: |
+    <b>[Bot]</b> #{{poll.code_display}} {{poll.nick}} Introduce una cuestión:
+    <i>{{poll.question}}</i>
+    {%for v in poll.variants%}
+    {%if loop.index0==selected%}✔{%endif%}{{map[loop.index0]}} - <i>{{v}}</i>
+    {%endfor%}
+  poll: |
+    {%if started%}<b>[Bot]</b> La encuesta está anunciada!{%else%}<b>[BOT]</b>{%endif%} #{{user.code_display}} {{user.nick}} introduce una cuestión:
+    <i>{{poll.question}}</i>
+    {%if vote%}Elige una opción:{%endif%}
+    {%for v in poll.variants%}
+    {{map[loop.index0]}} - <i>{{v}}</i>
+    {%endfor%}
+    {%if vote_user%}
+    You voted for:
+    {%if vote_user._id in poll.answers%}{{poll.variants[poll.answers[vote_user._id]]}}{%else%}<i>No votaste aún.</i>{%endif%}
+    {%endif%}
+  done: |
+    <b>[Bot]</b> Results of poll #{{user.code_display}} {{user.nick}}:
+    <i>{{poll.question}}</i>
+    {%for s, p in poll.total%}
+    {{map[loop.index0]}} {{p}}%({{s}}) - <i>{{poll.variants[loop.index0]}}</i>
+    {%endfor%}
+    The number of voters: {{poll.answers|length}} users.
+  notification:
+    start: |
+      <b>[BOT]</b> In chat{%if bot%} @{{bot}}{%endif%} la encuesta fue anunciada! #{{user.code_display}} {{user.nick}} introduce una questión:
+      <i>{{poll.question}}</i>
+    chat: |
+      <b>[Bot]</b> La encuesta está activa! #{{user.code_display}} {{user.nick}} introducce una cuestión:
+      <i>{{poll.question}}</i>
+      Puedes votar usando el comando /vote.
+  canceled: |
+    <b>[BOT]</b> Empezar{%if inline%}encuesta en linea{%else%}poll{%endif%} fue cancelada.
+  error: |
+    <b>[BOT]</b> {%if inline%}La encuesta en linea{%else%}Poll{%endif%} debe contener de 2 a 10 posibles respuestas.
+    Inténtalo otra vez o pulsa /cancel para cancelar.
+  text_only: |
+    <b>[BOT]</b> Usa solo texto.
+  not_active_inline: |
+    La encuesta no está activa.
+  not_active: |
+    <b>[BOT]</b> La encuesta no está activa. Para empezar tu encuesta pulsa el comando /poll.
+  vote_ok: |
+    Tu voto se ha tomado en cuenta.
+  done_fail: |
+    <b>[BOT]</b> Solo el moderador o el propietariode la encuesta puede terminarla.
+  alredy_active: |
+    <b>[BOT]</b> La encuesta está activa. #{{user.code_display}} {{user.nick}} Introduce una cuestión:
+    <i>{{poll.question}}</i>
+    Han votado {{poll.answers|length}} usuarios.
+    Para votar usa el comando /vote.
+  in_progress: |
+    <b>[BOT]</b> Alguien empezó una encuesta y no acabó todavía. Tienes que esperar.
+  vote_ended: |
+    La encuesta terminó.
+list:
+  kb:
+    more: ⏬ Mostrar todo ⏬
+    short: ⏫ Minimizar ⏫
+  text: |
+    <b>[BOT]</b> <i>{{online}}</i>(of <i>{{all}}</i>) usuarios en el chat:
+    {%for u, m, h, d in users%}
+    {{T('common/luna', minutes=m, hours=h, days=d)}}{{T('common/symbol', user=u)}}#{{u.code_display}} {{u.nick}}
+    {%endfor%}
+last:
+  text: |
+    <b>[BOT]</b> Recently exited:
+    {%for u in users%}
+    {{T('common/symbol', user=u)}}#{{u.code_display}} {{u.nick}}, {{u.last_activity|elapsed()}}
+    {%endfor%}
+search:
+  text: |
+    <b>[BOT]</b> Search results:
+    {%for u in users%}
+    {{T('common/symbol', user=u)}}#{{u.code_display}} {{u.nick}}, {{u.last_activity|elapsed()}}
+    {%endfor%}
+    {%if too_many%}
+    <i>Demasiadas cuentas encontradas. Especifica tu solicitud.</i>{%endif%}
+  nothing: |
+    <b>[BOT]</b> Nada encontrado.
+message:
+  text: |
+    {%if hidden%}<b>$</b> {%endif%}{%if edit%}<b>&</b> {%endif%}{{user.nick}}{%if text%}:  {{text}}{%endif%}
+  me: |
+    <b>{%if edit%}& {%endif%}*</b> <i>{{user.nick}}  {{text}}</i>
+  hidden:
+    kb:
+      show: |
+        👀 Mostrar
+    photo: |
+      Foto oculta de #{{user.code_display}} {{user.nick}}{%if caption%}:  {{caption}}{%else%}.{%endif%}
+    document: |
+      Documento oculto de #{{user.code_display}} {{user.nick}}{%if caption%}:  {{caption}}{%else%}.{%endif%}
+  edition:
+    noresident: |
+      <b>[BOT]</b> Solo un residente puede editar mensajes.
+    forbidden: |
+      <b>[BOT]</b> No puedo editar este mensaje.
+    timeout: |
+      <b>[BOT]</b> Tiempo de edición de mensaje terminado.
+  not_sent: |
+    <b>[BOT]</b> El bot no envía localizaciones o detalles de contactos.
+  flood: |
+    <b>[BOT]</b> Demasiados mensajes! Espera un poquito antes de escribir!
+  filtered: |
+    <b>[Bot]</b> Lo siento mucho, pero no puedes enviar enlaces!
+  stickers_too_fast: |
+    <b>[Bot]</b> Demasiados stickers! Espera {{seconds}} segundos más!
+  text_only: |
+    <b>[BOT]</b> Has sido restringido a modo de solo texto.
+  notification: |
+    <b>[BOT]</b> Respuesta de #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+  forbid: |
+    <b>[BOT]</b> Tú (o este usuario) ha ha prohibido responder a sus mensajes. Tu mensaje no ha sido enviado. 🤷‍♂️
+harakiri:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} hizo un harakiri y no puede volver al chat en {{user.harakiri_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Hiciste un harakiri y no puedes volver al chat en {{user.harakiri_till|remaining(show_seconds=True)}}.
+  fail: |
+    <b>[BOT]</b> Error.
+    Para hacer este comando funcionar introduce /harakiri y el tiempo en minutor (de 1 a 10080) o R para jugar al juego.
+nick:
+  enter: |
+    <b>[BOT]</b> Tu alias es ahora - {{user.nick}}
+    Introduce un nuevo alias o presiona /cancel para cancelar.
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{old_nick}} cambió su alias a {{user.nick}}
+  bad: |
+    <b>[BOT]</b> Este alias no encaja.
+  canceled: |
+    <b>[BOT]</b> El cambio de alias fue cancelado.
+  frozen: |
+    <b>[BOT]</b> No tienes permitido cambiarte el alias.
+  taken: |
+    <b>[BOT]</b> Ese alias ya está siendo utilizado.
+  long: |
+    <b>[BOT]</b> Alias demasiado largo.
+  msg: |
+    <b>[BOT]</b> Tu nuevo alias es - {{user.nick}}.
+notify:
+  kb:
+    hugs: |
+      {%if user.notify_hugs%}✅{%else%}❌{%endif%} Abrazos
+    msg: |
+      {%if user.notify_msg%}✅{%else%}❌{%endif%} Privados
+    poll: |
+      {%if user.notify_poll%}✅{%else%}❌{%endif%} Encuestas
+    replays: |
+      {%if user.notify_replays%}✅{%else%}❌{%endif%} Respuestas
+    slaps: |
+      {%if user.notify_slaps%}✅{%else%}❌{%endif%} Bofetadas
+    timeout: |
+      {%if user.notify_timeout == val%}✅ {%else%}❌{%endif%}{{val}}
+  text: |
+    <b>[BOT]</b> Ajustes de tus notificaciones:
+  goto: |
+    <b>[BOT]</b> Чтобы получать уведомления из чата, нужно воспользоваться ботом @{{bot}}.
+  help: |
+    <b>[BOT]</b> Этот бот посылает уведомления, когда кто-то отвечает тебе на сообщение или пишет личное сообщение в @{{bot}}.
+    Обрати внимание, что уведомление об ответах работают только когда ты находишься в чате. Уведомления о личных сообщениях и форели работают всегда.
+    Чтобы настроить уведомления, нажми - /settings.
+  disabled: |
+    <b>[BOT]</b> Отключены все уведомления.
+  unknown: |
+    <b>[BOT]</b> Я тебя еще не знаю. Чтобы пользоваться этим ботом, войди сначала на @{{bot}}.
+owner:
+  options:
+    state: |
+      <b>[BOT]</b> Ajustes del chat:
+      🔹 <b>closed</b> - Chat privado(entrar solo con invitación).
+      Possible values: True, False.
+      Current value: <b>{{options.closed}}</b>.
+      🔹 <b>invite_allowed</b> - Quien puede invitar a usuarios.
+      Possible values: all, resident, moderator, admin, owner.
+      Current value: <b>{{options.invite_allowed}}</b>.
+      🔹 <b>lang</b> - Idioma del chat.
+      Possible values: {%for l in langs%}{{l}}{%if not loop.last%}, {%endif%}{%endfor%}.
+      Current value: <b>{{options.lang}}</b>.
+      🔹 <b>rules</b> - reglas del chat.
+      Puede ser usado el formato Html. Los tags deben ser cerrados necesariamente. Los tags adjuntos no funcionan. En caso de error con los tags, los comandos podrian no funcionar.
+      Current value: hit /rules.
+      🔹 <b>silent_start</b> - no mostrar mensajes de iniciar en el chat.
+      Current value: <b>{{options.silent_start}}</b>.
+      🔹 <b>silent_stop</b> - no mostrar mensajes de detener en el chat.
+      Current value: <b>{{options.silent_stop}}</b>.
+      🔹 <b>silent_cmds</b> - permitir usar los comandos silenciar de los administradores.
+      Current value: <b>{{options.silent_cmds}}</b>.
+      Current value: <b>{{options.silent_cmds}}</b>.
+    ok: |
+      <b>[BOT]</b> Ajustes guardados.
+  admins:
+    added: |
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente promovido a administrador.
+    removed: |
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente eliminado de administradores.
+admin:
+  moderators:
+    added: |
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente promovido a moderador.
+    removed: |
+      <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} atisfactoriamente eliminado de moderadores.
+  unbaned: |
+    <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente desbloqueado.
+  changedid: |
+    <b>[BOT]</b> Usuario ID #{{user.code_display}} {{user.nick}} satisfactoriamente cambiado a #{{new_code}}.
+  say: |
+    <b>[Bot]</b> {{text}}
+  poll_killed: |
+    <b>[BOT]</b> Encuesta asesinada.
+moderator:
+  kb:
+    freeze: |
+      ❄️ Congelar
+    kick: |
+      👞 Expulsar
+    mute: |
+      🙊 {{val}}
+    resident: |
+      ⚓️ Residente
+    textual: |
+      🔤 Textual
+  moderation: |
+    👮 Moderation for #{{user.code_display}} {{user.nick}}.
+    {%for l in log%}
+    {{l.time.strftime('%m/%d %H:%M')}} {%if l.by%}#{{l.by.code_display}} {%endif%}<b>{{l.action.upper()}}</b> <i>{%if l.data.till%}{{l.data.till|remaining(show_seconds=True, from_time=l.time)}}{%endif%}
+    {%if l.data.nick%}{{l.data.nick}}{%endif%}
+    {%if l.data.id%}#{{l.data.id}}{%endif%}
+    {%if l.data.status is defined%}{%if l.data.status%}ON{%else%}OFF{%endif%}{%endif%}
+    {%if l.data.achievement%}{{l.data.achievement}} - {{l.data.text}}{%endif%}</i>
+    {%endfor%}
+  done: |
+    <b>[BOT]</b> Usuario #{{user.code_display}} {{user.nick}} satisfactoriamente actualizado.
+achievement:
+  added: |
+    <b>[Bot]</b> Usuario #{{user.code_display}} {{user.nick}} tiene un nuevo logro:
+    {{symbol}} - {{text}}
+  removed: |
+    <b>[Bot]</b> Usuario #{{user.code_display}} {{user.nick}} perdió el logro:
+    {{symbol}} - {{text}}
+ban:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} bloqueado para siempre!
+  text: |
+    <b>[BOT]</b> A mi gran pesar, has sido bloqueado! Parece que tu comportamiento fue malo. No escribas aquí nunca más.
+mute:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} está silenciado durante {{user.muted_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Estás silenciado en el chat durante {{user.muted_till|remaining(show_seconds=True)}}.
+    Tus mensajes, fotos y stickers no se muestran en el chat, el bot no mostrará si entras o sales. Espera que el tiempo pase y no lo malgastes más.
+    Tus comandos disponibles son: /start, /stop y /rules.
+kick:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} está expulsado durante {{user.kicked_till|remaining(show_seconds=True)}}.
+  text: |
+    <b>[BOT]</b> Has sido expulsado. Puedes volver en {{user.kicked_till|remaining(show_seconds=True)}}.
+rename:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} ha sido renombrado a {{nick}}.
+  text: |
+    <b>[BOT]</b> Has sido renombrado. Tu nuevo alias es - {{nick}}.
+pong: |
+  <b>[BOT]</b> <i>pong</i>.
+rules: |
+  <b>[BOT] Reglas del chat:</b>
+  {{rules}}
+private:
+  kb:
+    reply: |
+      ✏️ Responder
+    receive: |
+      📩 Recibir
+  notification: |
+    <b>[BOT]</b> Tienes un mensaje privado de #{{user.code_display}} {{user.nick}}{%if bot%} en chat @{{bot}}{%endif%}.
+    {%if offline%}Entra en el chat (/start), para verlo.{%endif%}
+  empty: |
+    {%if not callback%}<b>[BOT]</b> {%endif%}No hay mensajes privados para ti.
+  remind: |
+    <b>[BOT]</b> Tienes {{num}} mensajes privados esperándote.
+  send:
+    canceled: |
+      <b>[BOT]</b> Envío de mensaje privado cancelado.
+    fail: |
+      <b>[BOT]</b> El envío falló.
+    fail_type: |
+      <b>[BOT]</b> No puedo enviar este mensaje.
+    fail_user: |
+      <b>[BOT]</b> No encuentro a este usuario.
+    ok: |
+      <b>[BOT]</b> Tu mensaje para #{{user.code_display}} {{user.nick}} satisfactoriamente enviado.
+    select: |
+      <b>[BOT]</b> Selecciona un usuario.
+    type: |
+      <b>[BOT]</b> Escribe tu mensaje y será enviado al usuario #{{user.code_display}} {{user.nick}}.
+  receive:
+    message: |
+      <b>[BOT]</b> Mensaje privado de #{{user.code_display}} {{user.nick}} a las {{time}}:
+      {{message}}
+    sticker: |
+      <b>[BOT]</b> Mensaje privado(<b>sticker</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+    audio: |
+      <b>[BOT]</b> Mensaje privado(<b>audio</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+    document: |
+      <b>[BOT]</b> Mensaje privado(<b>document</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+    photo: |
+      <b>[BOT]</b> Mensaje privado(<b>photo</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+    video: |
+      <b>[BOT]</b> Mensaje privado(<b>video</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+    video_note: |
+      <b>[BOT]</b> Mensaje privado(<b>video note</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+    voice: |
+      <b>[BOT]</b> Mensaje privado(<b>voice</b>) de #{{user.code_display}} {{user.nick}} a las {{time}}.
+slap:
+  all: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} abofeteó a </i>#{{uto.code_display}}<i> {{uto.nick}} con una gran trucha{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+  list: |
+    <b>[BOT]</b> Selecciona a un usuario para abofetearle:
+  slow: |
+    <b>[BOT]</b> No es necesario batir la trucha tantas veces!
+  notification: |
+    <b>[BOT]</b> Bofetada de #{{user.code_display}} {{user.nick}}{%if bot%} en el chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+hug:
+  all: |
+    <b> *</b> #{{ufrom.code_display}} <i>{{ufrom.nick}} abrazó a </i>#{{uto.code_display}}<i> {{uto.nick}}{%if hash%}(</i>#{{hash}}<i>){%endif%}.</i>
+  list: |
+    <b>[BOT]</b> Selecciona a un usuario para abrazarle:
+  slow: |
+    <b>[BOT]</b> No es necesario abrazar tantas veces!
+  notification: |
+    <b>[BOT]</b> Abrazo de #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}{%if hash%} - #{{hash}}{%endif%}.
+start:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} entró en el chat.{%if new%} <b>He's new!</b>{%endif%}
+  text: |
+    <b>[BOT]</b> Entraste en el chat. Tu alias es - {{user.nick}}. Para salir del chat pulsa /stop.
+  welcome: |
+    <b>[BOT]</b> Bienvenid@ a un chat anónimo.
+    Para salir pulsa /stop
+    Hay un alias generado automáticamente para ti - {{user.nick}}.
+    Si no te gusta, puedes asignarte uno tú, con el comando /nick
+    <b>Disfruta del chat!</b>
+  started: |
+    <b>[BOT]</b> Ya estás en el chat. Para salir pulsa /stop.
+  not_started: |
+    <b>[BOT]</b> No estás en el chat. Para entrar pulsa /start.
+stop:
+  all: |
+    <b>[Bot]</b> #{{user.code_display}} {{user.nick}} salió del chat.{%if banned%} <b>Este granuja ha detenido el bot!</b>{%endif%}{%if cleaner%} <b>Ha permanecido inactivo por mucho tiempo.</b>{%endif%}
+  text: |
+    <b>[BOT]</b> Saliste del chat. Vuelve pronto!
+    Para entrar de nuevo - presiona /start.
