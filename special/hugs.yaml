@@ -91,3 +91,8 @@
 - "<b> *</b> <i>#$from_code $from_nick обещает подарить все звёзды космоса #$to_code $to_nick(#$hash_code).</i>"
 - "<b> *</b> <i>У #$from_code $from_nick были слишком короткие шортики, и это очень смутило #$to_code $to_nick(#$hash_code).</i>"
 - "<b> *</b> <i>#$from_code $from_nick делает фото ног, чтобы отправить #$to_code $to_nick(#$hash_code).</i>"
+- "<b> *</b> <i>#$from_code $from_nick сильно-сильно обнимает #$to_code $to_nick(#$hash_code) до хруста косточек.</i>"
+- "<b> *</b> <i>Как растениям нужна вода и солнце, так #$from_code $from_nick нужны объятия с #$to_code $to_nick(#$hash_code).</i>"
+- "<b> *</b> <i>#$from_code $from_nick очень хотел обнять #$to_code $to_nick(#$hash_code), но увидев смиряющий взгляд — отступил.</i>"
+- "<b> *</b> <i>Объятия #$from_code $from_nick для #$to_code $to_nick(#$hash_code) как кружечка горячего чая в зимнюю стужу.</i>"
+- "<b> *</b> <i>«Облом», подумал #$from_code $from_nick, когда #$to_code $to_nick(#$hash_code) оттолкнул его вместо того, чтобы обнять.</i>"
