@@ -554,8 +554,8 @@ rules: |
 
 private:
   kb:
-    reply: |
-      ✏️ Reply
+    receive: |
+      📩 Receive
 
   notification: |
     <b>[BOT]</b> You have a private message from #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}.

@@ -554,8 +554,8 @@ rules: |
 
 private:
   kb:
-    reply: |
-      ✏️ Membalas
+    receive: |
+      📩 Menerima
 
   notification: |
     <b>[BOT]</b> Anda memiliki pesan pribadi dari #{{user.code_display}} {{user.nick}}{%if bot%} dalam obrolan @{{bot}}{%endif%}.
