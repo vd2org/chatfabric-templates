@@ -555,8 +555,6 @@ private:
   kb:
     reply: |
       ✏️ Membalas
-    receive: |
-      📩 Menerima
 
   notification: |
     <b>[BOT]</b> Anda memiliki pesan pribadi dari #{{user.code_display}} {{user.nick}}{%if bot%} dalam obrolan @{{bot}}{%endif%}.
@@ -584,23 +582,9 @@ private:
 
   receive:
     message: |
-      <b>[BOT]</b> Pesan pribadi dari #{{user.code_display}} {{user.nick}} pada {{time}}:
-
-      {{message}}
-    sticker: |
-      <b>[BOT]</b> Pesan pribadi(<b>sticker</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    audio: |
-      <b>[BOT]</b> Pesan pribadi(<b>audio</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    document: |
-      <b>[BOT]</b> Pesan pribadi(<b>document</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    photo: |
-      <b>[BOT]</b> Pesan pribadi(<b>photo</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    video: |
-      <b>[BOT]</b> Pesan pribadi(<b>video</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    video_note: |
-      <b>[BOT]</b> Pesan pribadi(<b>video note</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    voice: |
-      <b>[BOT]</b> Pesan pribadi(<b>voice</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      📨 #{{user.code_display}} {{user.nick | remove_tags}}
+    time: |
+      🕓 {{time}} ✏️
 
 slap:
   all: |

@@ -553,8 +553,6 @@ rules: |
 
 private:
   kb:
-    reply: |
-      ✏️ Ответить
     receive: |
       📩 Получить сообщения
 
@@ -581,25 +579,12 @@ private:
       <b>[BOT]</b> Выбери пользователя для отправки личного сообщения.
     type: |
       <b>[BOT]</b> Отправь сообщение, и оно будет отправлено пользователю #{{user.code_display}} {{user.nick}}.
+
   receive:
     message: |
-      <b>[BOT]</b> Личное сообщение от #{{user.code_display}} {{user.nick}} в {{time}}:
-
-      {{message}}
-    sticker: |
-      <b>[BOT]</b> Личное сообщение (<b>стикер</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
-    audio: |
-      <b>[BOT]</b> Личное сообщение (<b>аудио</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
-    document: |
-      <b>[BOT]</b> Личное сообщение (<b>документ</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
-    photo: |
-      <b>[BOT]</b> Личное сообщение (<b>фото</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
-    video: |
-      <b>[BOT]</b> Личное сообщение (<b>видео</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
-    video_note: |
-      <b>[BOT]</b> Личное сообщение (<b>видеосообщение</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
-    voice: |
-      <b>[BOT]</b> Личное сообщение (<b>войс</b>) от #{{user.code_display}} {{user.nick}} в {{time}}.
+      📨 #{{user.code_display}} {{user.nick | remove_tags}}
+    time: |
+      🕓 {{time}} ✏️
 
 slap:
   all: |

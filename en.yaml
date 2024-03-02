@@ -555,8 +555,6 @@ private:
   kb:
     reply: |
       ✏️ Reply
-    receive: |
-      📩 Receive
 
   notification: |
     <b>[BOT]</b> You have a private message from #{{user.code_display}} {{user.nick}}{%if bot%} in chat @{{bot}}{%endif%}.
@@ -584,23 +582,9 @@ private:
 
   receive:
     message: |
-      <b>[BOT]</b> Private message from #{{user.code_display}} {{user.nick}} at {{time}}:
-
-      {{message}}
-    sticker: |
-      <b>[BOT]</b> Private message(<b>sticker</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    audio: |
-      <b>[BOT]</b> Private message(<b>audio</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    document: |
-      <b>[BOT]</b> Private message(<b>document</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    photo: |
-      <b>[BOT]</b> Private message(<b>photo</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    video: |
-      <b>[BOT]</b> Private message(<b>video</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    video_note: |
-      <b>[BOT]</b> Private message(<b>video note</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
-    voice: |
-      <b>[BOT]</b> Private message(<b>voice</b>) from #{{user.code_display}} {{user.nick}} at {{time}}.
+      📨 #{{user.code_display}} {{user.nick | remove_tags}}
+    time: |
+      🕓 {{time}} ✏️
 
 slap:
   all: |
