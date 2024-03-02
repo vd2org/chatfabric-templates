@@ -6,6 +6,7 @@ about: |
   <b>Msg rate:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
 
   Бот построен на платформе @ChatFactoryBot, версия <i>{{version}}</i>.
+  Rocketgram version <i>{{rocketgram_version}}</i>.
 
   По вопросам использования платформы и разработке ботов обращайтесь в @RocketBotsBot.
 

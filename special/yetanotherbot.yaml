@@ -8,6 +8,7 @@ rules:
 
 about: |
   <b>[Bot]</b> <b>YetAnotherBot</b>, platform version <i>{{version}}</i>.
+  Rocketgram version <i>{{rocketgram_version}}</i>.
 
   <b>Я существую:</b> {{birthday|elapsed(show_seconds=True)}}.
 

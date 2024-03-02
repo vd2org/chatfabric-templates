@@ -6,6 +6,7 @@ about: |
   <b>Tarif SMS:</b> {{r_hours}} msgs/hr, {{r_days}} msgs/day.
 
   Bot dibangun di atas platform @ChatFactoryBot, version <i>{{version}}</i>.
+  Rocketgram version <i>{{rocketgram_version}}</i>.
 
   Jika Anda memiliki pertanyaan tentang penggunaan platform atau pengembangan bot - hubungi @RocketBotsBot.
 
