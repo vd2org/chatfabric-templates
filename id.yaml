@@ -21,6 +21,7 @@ help: |
   /list - <i>Daftar pengguna dalam obrolan</i>
   % - <i>Tulis sebagai orang ketiga</i>
   $ - <i>Tulis pesan tersembunyi</i>
+  # - <i>Write hidden and protected message</i>
   /last - <i>Tampilkan pengguna yang terakhir keluar</i>
   /msg - <i>Kirim pesan pribadi</i>
   /getmsg - <i>Dapatkan pesan pribadi</i>

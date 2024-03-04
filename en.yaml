@@ -21,6 +21,7 @@ help: |
   /list - <i>List of users in a chat</i>
   % - <i>Write in the third person</i>
   $ - <i>Write hidden message</i>
+  # - <i>Write hidden and protected message</i>
   /last - <i>Show last exited users</i>
   /msg - <i>Send a private message</i>
   /getmsg - <i>Get private messages</i>
